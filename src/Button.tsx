@@ -1,7 +1,9 @@
-type ButtonType = {
-  title: string;
+export const Button = ({ title, onClick }: ButtonType) => {
+  return <button onClick={onClick}>{title}</button>;
 };
 
-export const Button = ({ title }: ButtonType) => {
-  return <button>{title}</button>;
+// types
+type ButtonType = {
+  title: string;
+  onClick?: () => void;
 };
