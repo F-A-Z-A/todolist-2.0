@@ -16,9 +16,6 @@ function App() {
     { id: v1(), title: "HTML&CSS", isDone: true },
     { id: v1(), title: "JS", isDone: true },
     { id: v1(), title: "ReactJS", isDone: false },
-    { id: v1(), title: "Redux", isDone: false },
-    { id: v1(), title: "Typescript", isDone: false },
-    { id: v1(), title: "RTK query", isDone: false },
   ]);
 
   const [filter, setFilter] = useState<FilterValuesType>("all");
@@ -30,10 +27,6 @@ function App() {
     setTasks(filteredTasks);
   };
 
-  const changeFilter = (filter: FilterValuesType) => {
-    setFilter(filter);
-  };
-
   const addTask = (title: string) => {
     const newTask = {
       id: v1(),
@@ -42,6 +35,19 @@ function App() {
     };
     const newTasks = [newTask, ...tasks];
     setTasks(newTasks);
+  };
+
+  const changeFilter = (filter: FilterValuesType) => {
+    setFilter(filter);
+  };
+
+  const changeTaskStatus = (taskId: string, taskStatus: boolean) => {
+    setTasks(tasks.map((t) => (t.id === taskId ? { ...t, isDone: taskStatus } : t)));
+    // const task = tasks.find((t) => t.id === taskId);
+    // if (task) {
+    //   task.isDone = taskStatus;
+    //   setTasks([...tasks]);
+    // }
   };
 
   let tasksForTodolist = tasks;
@@ -61,6 +67,8 @@ function App() {
         removeTask={removeTask}
         changeFilter={changeFilter}
         addTask={addTask}
+        changeTaskStatus={changeTaskStatus}
+        filter={filter}
       />
     </div>
   );
