@@ -1,5 +1,7 @@
-import { Button } from "./Button";
 import { ChangeEvent, KeyboardEvent, useState } from "react";
+import TextField from "@mui/material/TextField";
+import IconButton from "@mui/material/IconButton";
+import AddBoxIcon from "@mui/icons-material/AddBox";
 
 type PropsType = {
   addItem: (title: string) => void;
@@ -18,7 +20,7 @@ export const AddItemForm = ({ addItem }: PropsType) => {
     }
   };
 
-  const changeItemTitleHandler = (event: ChangeEvent<HTMLInputElement>) => {
+  const changeItemHandler = (event: ChangeEvent<HTMLInputElement>) => {
     setTitle(event.currentTarget.value);
   };
 
@@ -28,17 +30,24 @@ export const AddItemForm = ({ addItem }: PropsType) => {
       addItemHandler();
     }
   };
-
   return (
     <div>
-      <input
-        className={error ? "error" : ""}
+      <TextField
+        label={"Enter a title"}
+        variant={"outlined"}
         value={title}
-        onChange={changeItemTitleHandler}
+        size={"small"}
+        error={!!error}
+        helperText={error}
+        onChange={changeItemHandler}
         onKeyUp={addItemOnKeyUpHandler}
       />
-      <Button title={"+"} onClick={addItemHandler} />
-      {error && <div className={"error-message"}>{error}</div>}
+      {/*<Button variant={"contained"} onClick={addItemHandler}>*/}
+      {/*  +*/}
+      {/*</Button>*/}
+      <IconButton onClick={addItemHandler} color={"primary"}>
+        <AddBoxIcon />
+      </IconButton>
     </div>
   );
 };
