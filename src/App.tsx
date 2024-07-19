@@ -1,6 +1,6 @@
 import "./App.css";
 import { Todolist } from "./Todolist";
-import { useState } from "react";
+import React, { useState } from "react";
 import { v1 } from "uuid";
 import { AddItemForm } from "./AddItemForm";
 import AppBar from "@mui/material/AppBar";
@@ -15,26 +15,6 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Switch from "@mui/material/Switch";
 import CssBaseline from "@mui/material/CssBaseline";
 
-type ThemeMode = "dark" | "light";
-
-export type TaskType = {
-  id: string;
-  title: string;
-  isDone: boolean;
-};
-
-export type FilterValuesType = "all" | "active" | "completed";
-
-type TodolistType = {
-  id: string;
-  title: string;
-  filter: FilterValuesType;
-};
-
-export type TasksStateType = {
-  [key: string]: TaskType[];
-};
-
 function App() {
   let todolistID1 = v1();
   let todolistID2 = v1();
@@ -46,14 +26,24 @@ function App() {
 
   let [tasks, setTasks] = useState<TasksStateType>({
     [todolistID1]: [
-      { id: v1(), title: "HTML&CSS", isDone: true },
-      { id: v1(), title: "JS", isDone: false },
-      // { id: v1(), title: "ReactJS", isDone: false },
+      { id: v1(), title: "JS", isDone: true },
+      { id: v1(), title: "ReactJS", isDone: false },
     ],
     [todolistID2]: [
       { id: v1(), title: "Milk", isDone: true },
       { id: v1(), title: "Bread", isDone: false },
     ],
+  });
+
+  const [themeMode, setThemeMode] = useState<ThemeMode>("light");
+
+  const theme = createTheme({
+    palette: {
+      mode: themeMode === "light" ? "light" : "dark",
+      primary: {
+        main: "#087EA4",
+      },
+    },
   });
 
   const removeTask = (taskId: string, todolistId: string) => {
@@ -89,7 +79,6 @@ function App() {
   const removeTodolist = (todolistId: string) => {
     const newTodolists = todolists.filter((tl) => tl.id !== todolistId);
     setTodolists(newTodolists);
-
     delete tasks[todolistId];
     setTasks({ ...tasks });
   };
@@ -114,17 +103,6 @@ function App() {
     setTodolists(newTodolists);
   };
 
-  const [themeMode, setThemeMode] = useState<ThemeMode>("light");
-
-  const theme = createTheme({
-    palette: {
-      mode: themeMode === "light" ? "light" : "dark",
-      primary: {
-        main: "#087EA4",
-      },
-    },
-  });
-
   const changeModeHandler = () => {
     setThemeMode(themeMode == "light" ? "dark" : "light");
   };
@@ -132,7 +110,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <AppBar position={"static"} sx={{ marginBottom: "30px" }}>
+      <AppBar position="static" sx={{ mb: "30px" }}>
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
           <IconButton color="inherit">
             <MenuIcon />
@@ -146,9 +124,10 @@ function App() {
         </Toolbar>
       </AppBar>
       <Container fixed>
-        <Grid container sx={{ marginBottom: "30px" }}>
+        <Grid container sx={{ mb: "30px" }}>
           <AddItemForm addItem={addTodolist} />
         </Grid>
+
         <Grid container spacing={4}>
           {todolists.map((tl) => {
             const allTodolistTasks = tasks[tl.id];
@@ -164,7 +143,7 @@ function App() {
 
             return (
               <Grid>
-                <Paper elevation={3} sx={{ padding: "0 20px 20px 20px" }}>
+                <Paper sx={{ p: "0 20px 20px 20px" }}>
                   <Todolist
                     key={tl.id}
                     todolistId={tl.id}
@@ -190,3 +169,24 @@ function App() {
 }
 
 export default App;
+
+// types
+export type TaskType = {
+  id: string;
+  title: string;
+  isDone: boolean;
+};
+
+export type FilterValuesType = "all" | "active" | "completed";
+
+export type TodolistType = {
+  id: string;
+  title: string;
+  filter: FilterValuesType;
+};
+
+export type TasksStateType = {
+  [key: string]: TaskType[];
+};
+
+type ThemeMode = "dark" | "light";

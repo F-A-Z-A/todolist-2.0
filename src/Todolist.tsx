@@ -84,7 +84,6 @@ export const Todolist = (props: PropsType) => {
             const changeTaskTitleHandler = (title: string) => {
               updateTask(todolistId, task.id, title);
             };
-
             return (
               <ListItem key={task.id} sx={getListItemSx(task.isDone)}>
                 <div>
