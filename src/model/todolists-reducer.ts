@@ -1,8 +1,8 @@
 import { v1 } from "uuid";
 import { FilterValuesType, TodolistType } from "../App";
 
-let todolistID1 = v1();
-let todolistID2 = v1();
+export const todolistID1 = v1();
+export const todolistID2 = v1();
 
 const initialState: TodolistType[] = [
   { id: todolistID1, title: "What to learn", filter: "all" },
@@ -15,7 +15,7 @@ export const todolistsReducer = (state: TodolistType[] = initialState, action: A
       return state.filter((tl) => tl.id !== action.payload.todolistId);
     }
     case "ADD-TODOLIST": {
-      const newTodoList = { id: v1(), title: action.payload.title, filter: "all" };
+      const newTodoList = { id: action.payload.todolistId, title: action.payload.title, filter: "all" };
       return [newTodoList, ...state];
     }
     case "CHANGE-TODOLIST-TITLE": {
@@ -25,23 +25,16 @@ export const todolistsReducer = (state: TodolistType[] = initialState, action: A
       return state.map((tl) => (tl.id === action.payload.todolistId ? { ...tl, filter: action.payload.filter } : tl));
     }
     default:
-      throw new Error("I don't understand this type");
+      return state;
   }
 };
-
-// const action = {
-//   type: "todos/todoAdded",
-//   payload: {
-//     id: "1eb42cac-f809-4c16-b6b0-f3c6169d83b0",
-//   },
-// };
 
 export const removeTodolistAC = (todolistId: string): RemoveTodolistActionType => {
   return { type: "REMOVE-TODOLIST", payload: { todolistId } } as const;
 };
 
 export const addTodolistAC = (title: string): AddTodolistActionType => {
-  return { type: "ADD-TODOLIST", payload: { title } } as const;
+  return { type: "ADD-TODOLIST", payload: { todolistId: v1(), title } } as const;
 };
 
 export const changeTodolistTitleAC = (todolistId: string, title: string): ChangeTodolistTitleActionType => {
@@ -66,6 +59,7 @@ export type RemoveTodolistActionType = {
 export type AddTodolistActionType = {
   type: "ADD-TODOLIST";
   payload: {
+    todolistId: string;
     title: string;
   };
 };

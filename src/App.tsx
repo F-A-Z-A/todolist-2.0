@@ -37,15 +37,7 @@ function App() {
 
   const [themeMode, setThemeMode] = useState<ThemeMode>("light");
 
-  const theme = createTheme({
-    palette: {
-      mode: themeMode === "light" ? "light" : "dark",
-      primary: {
-        main: "#087EA4",
-      },
-    },
-  });
-
+  // tasks
   const removeTask = (taskId: string, todolistId: string) => {
     const newTodolistTasks = { ...tasks, [todolistId]: tasks[todolistId].filter((t) => t.id !== taskId) };
     setTasks(newTodolistTasks);
@@ -69,13 +61,15 @@ function App() {
     setTasks(newTodolistTasks);
   };
 
-  const changeFilter = (filter: FilterValuesType, todolistId: string) => {
-    const newTodolists = todolists.map((tl) => {
-      return tl.id === todolistId ? { ...tl, filter } : tl;
-    });
-    setTodolists(newTodolists);
+  const changeTaskTitle = (todolistId: string, taskId: string, title: string) => {
+    const newTodolistTasks = {
+      ...tasks,
+      [todolistId]: tasks[todolistId].map((t) => (t.id === taskId ? { ...t, title } : t)),
+    };
+    setTasks(newTodolistTasks);
   };
 
+  // todolists
   const removeTodolist = (todolistId: string) => {
     const newTodolists = todolists.filter((tl) => tl.id !== todolistId);
     setTodolists(newTodolists);
@@ -90,18 +84,26 @@ function App() {
     setTasks({ ...tasks, [todolistId]: [] });
   };
 
-  const updateTask = (todolistId: string, taskId: string, title: string) => {
-    const newTodolistTasks = {
-      ...tasks,
-      [todolistId]: tasks[todolistId].map((t) => (t.id === taskId ? { ...t, title } : t)),
-    };
-    setTasks(newTodolistTasks);
-  };
-
   const updateTodolist = (todolistId: string, title: string) => {
     const newTodolists = todolists.map((tl) => (tl.id === todolistId ? { ...tl, title } : tl));
     setTodolists(newTodolists);
   };
+
+  const changeFilter = (filter: FilterValuesType, todolistId: string) => {
+    const newTodolists = todolists.map((tl) => {
+      return tl.id === todolistId ? { ...tl, filter } : tl;
+    });
+    setTodolists(newTodolists);
+  };
+
+  const theme = createTheme({
+    palette: {
+      mode: themeMode === "light" ? "light" : "dark",
+      primary: {
+        main: "#087EA4",
+      },
+    },
+  });
 
   const changeModeHandler = () => {
     setThemeMode(themeMode == "light" ? "dark" : "light");
@@ -155,7 +157,7 @@ function App() {
                     changeTaskStatus={changeTaskStatus}
                     filter={tl.filter}
                     removeTodolist={removeTodolist}
-                    updateTask={updateTask}
+                    updateTask={changeTaskTitle}
                     updateTodolist={updateTodolist}
                   />
                 </Paper>
