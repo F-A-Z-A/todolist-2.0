@@ -1,4 +1,9 @@
-.todolist-title-container {
-  display: flex;
-  align-items: center;
+.App {
+	padding: 30px;
+	display: flex;
+	flex-direction: column;
+}
+
+.App > div {
+	margin-right: 50px;
 }
