@@ -1,6 +1,7 @@
 .App {
 	padding: 30px;
 	display: flex;
+	flex-direction: column;
 }
 
 .App > div {
@@ -8,7 +9,7 @@
 }
 
 .error {
-	border: red 2px solid;
+	border: red 1px solid;
 }
 
 .error-message {
@@ -21,4 +22,9 @@
 
 .is-done {
 	opacity: 0.5;
+}
+
+.todolist-title-container {
+	display: flex;
+	align-items: center;
 }
