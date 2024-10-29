@@ -5,11 +5,8 @@ export const filterButtonsContainerSx: SxProps = {
   justifyContent: "space-between",
 };
 
-export const listItemContainerSx: SxProps = {
+export const getListItemSx = (isDone: boolean): SxProps => ({
   p: 0,
   justifyContent: "space-between",
-};
-
-export const getListItemOpacitySx = (isDone: boolean): SxProps => ({
   opacity: isDone ? 0.5 : 1,
 });

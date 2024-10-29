@@ -4,7 +4,6 @@ import Button from "@mui/material/Button";
 type MenuButtonProps = {
   background?: string;
 };
-
 export const MenuButton = styled(Button)<MenuButtonProps>(({ background, theme }) => ({
   minWidth: "110px",
   fontWeight: "bold",

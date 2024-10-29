@@ -8,14 +8,12 @@ import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import Grid from "@mui/material/Grid2";
+import Grid from "@mui/material/Unstable_Grid2";
 import Paper from "@mui/material/Paper";
 import { MenuButton } from "./MenuButton";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import Switch from "@mui/material/Switch";
 import CssBaseline from "@mui/material/CssBaseline";
-import { Switch } from "@mui/material";
-
-type ThemeMode = "dark" | "light";
 
 export type TaskType = {
   id: string;
@@ -25,7 +23,7 @@ export type TaskType = {
 
 export type FilterValuesType = "all" | "active" | "completed";
 
-type TodolistType = {
+export type TodolistType = {
   id: string;
   title: string;
   filter: FilterValuesType;
@@ -35,23 +33,9 @@ export type TasksStateType = {
   [key: string]: TaskType[];
 };
 
-function App() {
-  const [themeMode, setThemeMode] = useState<ThemeMode>("light");
+type ThemeMode = "dark" | "light";
 
-  const theme = createTheme({
-    palette: {
-      mode: themeMode === "light" ? "light" : "dark",
-      primary: {
-        main: "#087EA4",
-        // main: "#ef6c00",
-      },
-    },
-  });
-
-  const changeModeHandler = () => {
-    setThemeMode(themeMode === "light" ? "dark" : "light");
-  };
-
+export function App() {
   let todolistID1 = v1();
   let todolistID2 = v1();
 
@@ -70,6 +54,17 @@ function App() {
       { id: v1(), title: "Rest API", isDone: true },
       { id: v1(), title: "GraphQL", isDone: false },
     ],
+  });
+
+  const [themeMode, setThemeMode] = useState<ThemeMode>("light");
+
+  const theme = createTheme({
+    palette: {
+      mode: themeMode === "light" ? "light" : "dark",
+      primary: {
+        main: "#087EA4",
+      },
+    },
   });
 
   const removeTask = (taskId: string, todolistId: string) => {
@@ -130,6 +125,10 @@ function App() {
     setTodolists(newTodolists);
   };
 
+  const changeModeHandler = () => {
+    setThemeMode(themeMode == "light" ? "dark" : "light");
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -150,6 +149,7 @@ function App() {
         <Grid container sx={{ mb: "30px" }}>
           <AddItemForm addItem={addTodolist} />
         </Grid>
+
         <Grid container spacing={4}>
           {todolists.map((tl) => {
             const allTodolistTasks = tasks[tl.id];
@@ -165,7 +165,7 @@ function App() {
 
             return (
               <Grid key={tl.id}>
-                <Paper elevation={3} sx={{ p: "20px" }}>
+                <Paper sx={{ p: "0 20px 20px 20px" }}>
                   <Todolist
                     todolistId={tl.id}
                     title={tl.title}
@@ -188,5 +188,3 @@ function App() {
     </ThemeProvider>
   );
 }
-
-export default App;

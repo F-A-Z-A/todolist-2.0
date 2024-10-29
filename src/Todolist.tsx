@@ -1,15 +1,15 @@
-import React, { ChangeEvent } from "react";
 import { FilterValuesType, TaskType } from "./App";
+import { ChangeEvent } from "react";
 import { AddItemForm } from "./AddItemForm";
 import { EditableSpan } from "./EditableSpan";
-import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
+import Button from "@mui/material/Button";
+import Checkbox from "@mui/material/Checkbox";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
-import Checkbox from "@mui/material/Checkbox";
-import { Box } from "@mui/material";
-import { filterButtonsContainerSx, getListItemOpacitySx, listItemContainerSx } from "./Todolist.styles";
+import Box from "@mui/material/Box";
+import { filterButtonsContainerSx, getListItemSx } from "./Todolist.styles";
 
 type PropsType = {
   title: string;
@@ -62,7 +62,7 @@ export const Todolist = (props: PropsType) => {
         <h3>
           <EditableSpan value={title} onChange={updateTodolistHandler} />
         </h3>
-        <IconButton onClick={removeTodolistHandler} color="secondary">
+        <IconButton onClick={removeTodolistHandler}>
           <DeleteIcon />
         </IconButton>
       </div>
@@ -84,15 +84,14 @@ export const Todolist = (props: PropsType) => {
             const changeTaskTitleHandler = (title: string) => {
               updateTask(todolistId, task.id, title);
             };
-
             return (
-              <ListItem key={task.id} sx={listItemContainerSx}>
-                <Box sx={getListItemOpacitySx(task.isDone)}>
-                  <Checkbox checked={task.isDone} onChange={changeTaskStatusHandler} size="small" color={"primary"} />
+              <ListItem key={task.id} sx={getListItemSx(task.isDone)}>
+                <div>
+                  <Checkbox checked={task.isDone} onChange={changeTaskStatusHandler} />
                   <EditableSpan value={task.title} onChange={changeTaskTitleHandler} />
-                </Box>
-                <IconButton onClick={removeTaskHandler} color="success" size={"small"}>
-                  <DeleteIcon fontSize="inherit" />
+                </div>
+                <IconButton onClick={removeTaskHandler}>
+                  <DeleteIcon />
                 </IconButton>
               </ListItem>
             );
@@ -102,22 +101,22 @@ export const Todolist = (props: PropsType) => {
       <Box sx={filterButtonsContainerSx}>
         <Button
           variant={filter === "all" ? "outlined" : "text"}
-          onClick={() => changeFilterTasksHandler("all")}
           color={"inherit"}
+          onClick={() => changeFilterTasksHandler("all")}
         >
           All
         </Button>
         <Button
           variant={filter === "active" ? "outlined" : "text"}
-          onClick={() => changeFilterTasksHandler("active")}
           color={"primary"}
+          onClick={() => changeFilterTasksHandler("active")}
         >
           Active
         </Button>
         <Button
           variant={filter === "completed" ? "outlined" : "text"}
-          onClick={() => changeFilterTasksHandler("completed")}
           color={"secondary"}
+          onClick={() => changeFilterTasksHandler("completed")}
         >
           Completed
         </Button>
