@@ -4,20 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7304798b-7f00-40f2-af4e-fa7f1bd69d1b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/project-todolist-2.0.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/tasksReducer.test.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/tasksReducer.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/todolistsReducer.test.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/todolistsReducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+    <list default="true" id="889c0120-3003-4df9-af66-37c0c39b95bc" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/model/tasks-reducer.test.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/tasks-reducer.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/todolists-reducer.test.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/todolists-reducer.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/todolists-tasks-reducer.test.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/todolist-2.0.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/todolists-reducer.test.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/todolists-reducer.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/tasksReducer.test.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/tasksReducer.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/todolistsReducer.test.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/todolistsReducer.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -31,26 +32,26 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;F-A-Z-A&quot;
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "F-A-Z-A"
   }
-}</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;git@github.com:F-A-Z-A/todolist-2.0.git&quot;,
-    &quot;accountId&quot;: &quot;e71cfcf0-40ea-4611-b1cf-270e2a896af0&quot;
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "git@github.com:F-A-Z-A/todolist-2.0.git",
+    "accountId": "e71cfcf0-40ea-4611-b1cf-270e2a896af0"
   }
-}</component>
+}]]></component>
   <component name="OptimizeOnSaveOptions">
     <option name="myRunOnSave" value="true" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 1
-}</component>
-  <component name="ProjectId" id="2oHLM2X7lsTlPSVWEPRdqhartGT" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 1
+}]]></component>
+  <component name="ProjectId" id="2oN6bUfsXKI9GRVJ1GrDTRmzQn5" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
@@ -60,17 +61,17 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Jest.correct task should be deleted from correct array.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/IT/FrontEnd/projects/git/project-todolist-2.0/src/model",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.stylelint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.stylelint": "",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs.jest.jest_package": "D:/IT/FrontEnd/projects/git/project-todolist-2.0/node_modules/react-scripts",
     "nodejs_package_manager_path": "yarn",
     "npm.start.executor": "Run",
     "npm.test.executor": "Run",
@@ -80,12 +81,19 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\IT\FrontEnd\projects\git\project-todolist-2.0\src\model" />
-    </key>
-  </component>
-  <component name="RunManager" selected="npm.start">
+  <component name="RunManager" selected="Jest.correct task should be deleted from correct array">
+    <configuration name="correct task should be deleted from correct array" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/model/tasks-reducer.test.ts" />
+      <test-names>
+        <test-name value="correct task should be deleted from correct array" />
+      </test-names>
+      <method v="2" />
+    </configuration>
     <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -108,6 +116,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Jest.correct task should be deleted from correct array" />
         <item itemvalue="npm.test" />
         <item itemvalue="npm.start" />
       </list>
@@ -123,17 +132,19 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="7304798b-7f00-40f2-af4e-fa7f1bd69d1b" name="Changes" comment="" />
-      <created>1730521503533</created>
+      <changelist id="889c0120-3003-4df9-af66-37c0c39b95bc" name="Changes" comment="" />
+      <created>1730697757694</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1730521503533</updated>
-      <workItem from="1730521504694" duration="3451000" />
-      <workItem from="1730541046582" duration="6019000" />
+      <updated>1730697757694</updated>
+      <workItem from="1730697759019" duration="8109000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>
