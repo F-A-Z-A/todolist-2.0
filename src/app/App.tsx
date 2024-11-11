@@ -19,18 +19,15 @@ import {
   changeTodolistTitleAC,
   removeTodolistAC,
 } from "../model/todolists-reducer";
-import { addTaskAC, changeTaskStatusAC, changeTaskTitleAC, removeTaskAC } from "../model/tasks-reducer";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "./store";
 
 export function App() {
   const todolists = useSelector<RootState, TodolistType[]>((state) => state.todolists);
 
-  const tasks = useSelector<RootState, TasksStateType>((state) => state.tasks);
-
   const dispatch = useDispatch();
 
-  const [themeMode, setThemeMode] = useState<ThemeMode>("light");
+  const [themeMode, setThemeMode] = useState<ThemeMode>("dark");
 
   const theme = createTheme({
     palette: {
@@ -39,24 +36,6 @@ export function App() {
     },
   });
 
-  // ---- functions for TASKS
-  const removeTask = (taskId: string, todolistId: string) => {
-    dispatch(removeTaskAC({ todolistId, taskId }));
-  };
-
-  const addTask = (title: string, todolistId: string) => {
-    dispatch(addTaskAC({ todolistId, title }));
-  };
-
-  const changeTaskStatus = (taskId: string, isDone: boolean, todolistId: string) => {
-    dispatch(changeTaskStatusAC({ todolistId, taskId, isDone }));
-  };
-
-  const updateTask = (todolistId: string, taskId: string, title: string) => {
-    dispatch(changeTaskTitleAC({ todolistId, taskId, title }));
-  };
-
-  // ---- functions for TODOLISTS
   const removeTodolist = (todolistId: string) => {
     dispatch(removeTodolistAC({ todolistId }));
   };
@@ -100,31 +79,15 @@ export function App() {
 
         <Grid container spacing={4}>
           {todolists.map((tl) => {
-            const allTodolistTasks = tasks[tl.id];
-            let tasksForTodolist = allTodolistTasks;
-
-            if (tl.filter === "active") {
-              tasksForTodolist = allTodolistTasks.filter((task) => !task.isDone);
-            }
-
-            if (tl.filter === "completed") {
-              tasksForTodolist = allTodolistTasks.filter((task) => task.isDone);
-            }
-
             return (
               <Grid key={tl.id}>
                 <Paper sx={{ p: "0 20px 20px 20px" }}>
                   <Todolist
                     todolistId={tl.id}
                     title={tl.title}
-                    tasks={tasksForTodolist}
-                    removeTask={removeTask}
                     changeFilter={changeFilter}
-                    addTask={addTask}
-                    changeTaskStatus={changeTaskStatus}
                     filter={tl.filter}
                     removeTodolist={removeTodolist}
-                    updateTask={updateTask}
                     updateTodolist={updateTodolist}
                   />
                 </Paper>

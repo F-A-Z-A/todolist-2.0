@@ -10,38 +10,35 @@ import ListItem from "@mui/material/ListItem";
 import Box from "@mui/material/Box";
 import { filterButtonsContainerSx, getListItemSx } from "./Todolist.styles";
 import { FilterValuesType, TaskType } from "./app/App";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "./app/store";
+import { addTaskAC, changeTaskStatusAC, changeTaskTitleAC, removeTaskAC } from "./model/tasks-reducer";
 
 type PropsType = {
   title: string;
   todolistId: string;
-  tasks: TaskType[];
-  removeTask: (taskId: string, todolistId: string) => void;
   changeFilter: (filter: FilterValuesType, todolistId: string) => void;
-  addTask: (title: string, todolistId: string) => void;
-  changeTaskStatus: (taskId: string, taskStatus: boolean, todolistId: string) => void;
   filter: FilterValuesType;
   removeTodolist: (todolistId: string) => void;
-  updateTask: (todolistId: string, taskId: string, title: string) => void;
   updateTodolist: (todolistId: string, title: string) => void;
 };
 
 export const Todolist = (props: PropsType) => {
-  const {
-    title,
-    tasks,
-    filter,
-    removeTask,
-    changeFilter,
-    addTask,
-    changeTaskStatus,
-    todolistId,
-    removeTodolist,
-    updateTask,
-    updateTodolist,
-  } = props;
+  const { title, filter, changeFilter, todolistId, removeTodolist, updateTodolist } = props;
+
+  const tasks = useSelector<RootState, TaskType[]>((state) => state.tasks[todolistId]);
+
+  const dispatch = useDispatch();
+
+  const getTasks = () => {
+    let filteredTasks = tasks;
+    if (filter === "active") filteredTasks = tasks.filter((task) => !task.isDone);
+    if (filter === "completed") filteredTasks = tasks.filter((task) => task.isDone);
+    return filteredTasks;
+  };
 
   const changeFilterTasksHandler = (filter: FilterValuesType) => {
-    changeFilter(filter, props.todolistId);
+    changeFilter(filter, todolistId);
   };
 
   const removeTodolistHandler = () => {
@@ -49,11 +46,11 @@ export const Todolist = (props: PropsType) => {
   };
 
   const addTaskCallback = (title: string) => {
-    addTask(title, props.todolistId);
+    dispatch(addTaskAC({ todolistId, title }));
   };
 
   const updateTodolistHandler = (title: string) => {
-    updateTodolist(props.todolistId, title);
+    updateTodolist(todolistId, title);
   };
 
   return (
@@ -71,18 +68,18 @@ export const Todolist = (props: PropsType) => {
         <p>Тасок нет</p>
       ) : (
         <List>
-          {tasks.map((task) => {
+          {getTasks().map((task) => {
             const removeTaskHandler = () => {
-              removeTask(task.id, todolistId);
+              dispatch(removeTaskAC({ todolistId, taskId: task.id }));
             };
 
             const changeTaskStatusHandler = (e: ChangeEvent<HTMLInputElement>) => {
               const newStatusValue = e.currentTarget.checked;
-              changeTaskStatus(task.id, newStatusValue, todolistId);
+              dispatch(changeTaskStatusAC({ todolistId, taskId: task.id, isDone: newStatusValue }));
             };
 
             const changeTaskTitleHandler = (title: string) => {
-              updateTask(todolistId, task.id, title);
+              dispatch(changeTaskTitleAC({ todolistId, taskId: task.id, title }));
             };
             return (
               <ListItem key={task.id} sx={getListItemSx(task.isDone)}>
