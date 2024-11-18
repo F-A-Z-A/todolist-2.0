@@ -1,122 +1,21 @@
-import "./App.css";
-import { Todolist } from "../Todolist";
-import React, { useState } from "react";
-import { AddItemForm } from "../AddItemForm";
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
-import Container from "@mui/material/Container";
-import Grid from "@mui/material/Unstable_Grid2";
-import Paper from "@mui/material/Paper";
-import { MenuButton } from "../MenuButton";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import Switch from "@mui/material/Switch";
 import CssBaseline from "@mui/material/CssBaseline";
-import {
-  addTodolistAC,
-  changeTodolistFilterAC,
-  changeTodolistTitleAC,
-  removeTodolistAC,
-} from "../model/todolists-reducer";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "./store";
+import { ThemeProvider } from "@mui/material/styles";
+import React from "react";
+import { getTheme } from "../common/theme/theme";
+import { Header } from "../common/components/Header/Header";
+import { Main } from "./Main";
+import { useAppSelector } from "../common/hooks/useAppSelector";
+import { selectThemeMode } from "./appSelectors";
 
-export function App() {
-  const todolists = useSelector<RootState, TodolistType[]>((state) => state.todolists);
-
-  const dispatch = useDispatch();
-
-  const [themeMode, setThemeMode] = useState<ThemeMode>("dark");
-
-  const theme = createTheme({
-    palette: {
-      mode: themeMode === "light" ? "light" : "dark",
-      primary: { main: "#087EA4" },
-    },
-  });
-
-  const removeTodolist = (todolistId: string) => {
-    dispatch(removeTodolistAC({ todolistId }));
-  };
-
-  const addTodolist = (title: string) => {
-    dispatch(addTodolistAC({ title }));
-  };
-
-  const updateTodolist = (todolistId: string, title: string) => {
-    dispatch(changeTodolistTitleAC({ todolistId, title }));
-  };
-
-  const changeFilter = (filter: FilterValuesType, todolistId: string) => {
-    dispatch(changeTodolistFilterAC({ todolistId, filter }));
-  };
-
-  const changeModeHandler = () => {
-    setThemeMode(themeMode === "light" ? "dark" : "light");
-  };
+export const App = () => {
+  const themeMode = useAppSelector(selectThemeMode);
+  const theme = getTheme(themeMode);
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <AppBar position="static" sx={{ mb: "30px" }}>
-        <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-          <IconButton color="inherit">
-            <MenuIcon />
-          </IconButton>
-          <div>
-            <MenuButton>Login</MenuButton>
-            <MenuButton>Logout</MenuButton>
-            <MenuButton background={theme.palette.primary.dark}>Faq</MenuButton>
-            <Switch color={"default"} onChange={changeModeHandler} />
-          </div>
-        </Toolbar>
-      </AppBar>
-      <Container fixed>
-        <Grid container sx={{ mb: "30px" }}>
-          <AddItemForm addItem={addTodolist} />
-        </Grid>
-
-        <Grid container spacing={4}>
-          {todolists.map((tl) => {
-            return (
-              <Grid key={tl.id}>
-                <Paper sx={{ p: "0 20px 20px 20px" }}>
-                  <Todolist
-                    todolistId={tl.id}
-                    title={tl.title}
-                    changeFilter={changeFilter}
-                    filter={tl.filter}
-                    removeTodolist={removeTodolist}
-                    updateTodolist={updateTodolist}
-                  />
-                </Paper>
-              </Grid>
-            );
-          })}
-        </Grid>
-      </Container>
+      <Header />
+      <Main />
     </ThemeProvider>
   );
-}
-
-// ---- types
-export type TaskType = {
-  id: string;
-  title: string;
-  isDone: boolean;
 };
-
-export type FilterValuesType = "all" | "active" | "completed";
-
-export type TodolistType = {
-  id: string;
-  title: string;
-  filter: FilterValuesType;
-};
-
-export type TasksStateType = {
-  [key: string]: TaskType[];
-};
-
-type ThemeMode = "dark" | "light";
