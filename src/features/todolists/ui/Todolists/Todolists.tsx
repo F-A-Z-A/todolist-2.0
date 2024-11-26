@@ -1,9 +1,9 @@
-import Grid from "@mui/material/Unstable_Grid2";
 import Paper from "@mui/material/Paper";
-import { Todolist } from "./Todolist/Todolist";
+import Grid from "@mui/material/Unstable_Grid2";
 import React from "react";
 import { useAppSelector } from "../../../../common/hooks/useAppSelector";
 import { selectTodolists } from "../../model/todolistsSelectors";
+import { Todolist } from "./Todolist/Todolist";
 
 export const Todolists = () => {
   const todolists = useAppSelector(selectTodolists);
@@ -14,7 +14,7 @@ export const Todolists = () => {
         return (
           <Grid key={tl.id}>
             <Paper sx={{ p: "0 20px 20px 20px" }}>
-              <Todolist key={tl.id} todolist={tl} />
+              <Todolist todolist={tl} />
             </Paper>
           </Grid>
         );

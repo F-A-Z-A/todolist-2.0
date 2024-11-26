@@ -1,18 +1,19 @@
-import ListItem from "@mui/material/ListItem";
-import Checkbox from "@mui/material/Checkbox";
-import { EditableSpan } from "../../../../../../../common/components/EditableSpan/EditableSpan";
-import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
+import Checkbox from "@mui/material/Checkbox";
+import IconButton from "@mui/material/IconButton";
+import ListItem from "@mui/material/ListItem";
 import { ChangeEvent } from "react";
+import { EditableSpan } from "../../../../../../../common/components/EditableSpan/EditableSpan";
+import { useAppDispatch } from "../../../../../../../common/hooks/useAppDispatch";
 import { changeTaskStatusAC, changeTaskTitleAC, removeTaskAC, TaskType } from "../../../../../model/tasks-reducer";
 import { TodolistType } from "../../../../../model/todolists-reducer";
 import { getListItemSx } from "./Task.styles";
-import { useAppDispatch } from "../../../../../../../common/hooks/useAppDispatch";
 
 type Props = {
   task: TaskType;
   todolist: TodolistType;
 };
+
 export const Task = ({ task, todolist }: Props) => {
   const dispatch = useAppDispatch();
 
@@ -21,7 +22,8 @@ export const Task = ({ task, todolist }: Props) => {
   };
 
   const changeTaskStatusHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    dispatch(changeTaskStatusAC({ taskId: task.id, isDone: e.currentTarget.checked, todolistId: todolist.id }));
+    const isDone = e.currentTarget.checked;
+    dispatch(changeTaskStatusAC({ taskId: task.id, isDone, todolistId: todolist.id }));
   };
 
   const changeTaskTitleHandler = (title: string) => {
@@ -29,7 +31,7 @@ export const Task = ({ task, todolist }: Props) => {
   };
 
   return (
-    <ListItem key={task.id} sx={getListItemSx(task.isDone)}>
+    <ListItem sx={getListItemSx(task.isDone)}>
       <div>
         <Checkbox checked={task.isDone} onChange={changeTaskStatusHandler} />
         <EditableSpan value={task.title} onChange={changeTaskTitleHandler} />

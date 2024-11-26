@@ -1,5 +1,13 @@
 import { v1 } from "uuid";
 
+export type FilterValuesType = "all" | "active" | "completed";
+
+export type TodolistType = {
+  id: string;
+  title: string;
+  filter: FilterValuesType;
+};
+
 const initialState: TodolistType[] = [];
 
 export const todolistsReducer = (state: TodolistType[] = initialState, action: ActionsType): TodolistType[] => {
@@ -58,12 +66,3 @@ type ActionsType =
   | AddTodolistActionType
   | ChangeTodolistTitleActionType
   | ChangeTodolistFilterActionType;
-
-// types
-export type FilterValuesType = "all" | "active" | "completed";
-
-export type TodolistType = {
-  id: string;
-  title: string;
-  filter: FilterValuesType;
-};

@@ -9,16 +9,21 @@ const initialState = {
 export const appReducer = (state: InitialState = initialState, action: ActionsType): InitialState => {
   switch (action.type) {
     case "CHANGE_THEME":
-      return { ...state, themeMode: action.payload.themeMode === "light" ? "dark" : "light" };
+      return { ...state, themeMode: action.payload.themeMode };
     default:
       return state;
   }
 };
 
-export const changeThemeAC = (payload: { themeMode: ThemeMode }) => {
-  return { type: "CHANGE_THEME", payload } as const;
+// Action creators
+export const changeThemeAC = (themeMode: ThemeMode) => {
+  return {
+    type: "CHANGE_THEME",
+    payload: { themeMode },
+  } as const;
 };
 
-// Action types
+// Actions types
 type ChangeThemeActionType = ReturnType<typeof changeThemeAC>;
+
 type ActionsType = ChangeThemeActionType;

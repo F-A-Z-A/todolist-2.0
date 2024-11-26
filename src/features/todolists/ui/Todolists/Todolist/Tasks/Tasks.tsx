@@ -1,31 +1,30 @@
-// @flow
-import * as React from "react";
 import List from "@mui/material/List";
-import { TodolistType } from "../../../../model/todolists-reducer";
 import { Task } from "./Task/Task";
+import type { TodolistType } from "../../../../model/todolists-reducer";
 import { useAppSelector } from "../../../../../../common/hooks/useAppSelector";
 import { selectTasks } from "../../../../model/tasksSelectors";
 
 type Props = {
   todolist: TodolistType;
 };
+
 export const Tasks = ({ todolist }: Props) => {
-  const tasks = useAppSelector(selectTasks);
+  const tasks = useAppSelector(selectTasks)[todolist.id];
 
   const getTasks = () => {
-    let filteredTasks = tasks[todolist.id];
+    let filteredTasks = tasks;
     if (todolist.filter === "active") {
-      filteredTasks = tasks[todolist.id].filter((task) => !task.isDone);
+      filteredTasks = tasks.filter((task) => !task.isDone);
     }
     if (todolist.filter === "completed") {
-      filteredTasks = tasks[todolist.id].filter((task) => task.isDone);
+      filteredTasks = tasks.filter((task) => task.isDone);
     }
     return filteredTasks;
   };
 
   return (
     <>
-      {tasks[todolist.id].length === 0 ? (
+      {tasks.length === 0 ? (
         <p>Тасок нет</p>
       ) : (
         <List>
