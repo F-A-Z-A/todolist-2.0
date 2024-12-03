@@ -1,161 +1,70 @@
+import { useEffect, useState } from "react";
+import type { Todolist } from "../features/todolists/api/todolistsApi.types";
+import type { BaseTask, DomainTask } from "../features/todolists/api/tasksApi.types";
+import { todolistsApi } from "../features/todolists/api/todolistsApi";
+import { tasksApi } from "../features/todolists/api/tasksApi";
 import Checkbox from "@mui/material/Checkbox";
-import React, { ChangeEvent, useEffect, useState } from "react";
-import { AddItemForm } from "../common/components/AddItemForm/AddItemForm";
-import { EditableSpan } from "../common/components/EditableSpan/EditableSpan";
-import axios from "axios";
-import { apiKey, tkKey } from "./keys";
+import { AddItemForm, EditableSpan } from "common/components";
+import { TaskStatus } from "common/enums";
 
 export const AppHttpRequests = () => {
   const [todolists, setTodolists] = useState<Todolist[]>([]);
-  const [tasks, setTasks] = useState<{ [key: string]: DomainTask[] }>({});
+  const [tasks, setTasks] = useState<{
+    [key: string]: DomainTask[];
+  }>({});
 
   useEffect(() => {
-    axios
-      .get<Todolist[]>("https://social-network.samuraijs.com/api/1.1/todo-lists", {
-        headers: { Authorization: tkKey },
-      })
-      .then((res) => {
-        const todolists = res.data;
-        setTodolists(todolists);
-        todolists.forEach((tl) => {
-          axios
-            .get<GetTasksResponse>(`https://social-network.samuraijs.com/api/1.1/todo-lists/${tl.id}/tasks`, {
-              headers: { Authorization: tkKey, "API-KEY": apiKey },
-            })
-            .then((res) => {
-              setTasks((prevTasks) => ({ ...prevTasks, [tl.id]: res.data.items }));
-            });
+    todolistsApi.getTodolists().then((res) => {
+      const todolists = res.data;
+      setTodolists(todolists);
+      todolists.forEach((tl) => {
+        tasksApi.getTasks(tl.id).then((res) => {
+          setTasks((prevState) => ({ ...prevState, [tl.id]: res.data.items }));
         });
       });
+    });
   }, []);
 
   const createTodolistHandler = (title: string) => {
-    axios
-      .post<CreateTodolistResponse>(
-        "https://social-network.samuraijs.com/api/1.1/todo-lists",
-        { title },
-        {
-          headers: { Authorization: tkKey, "API-KEY": apiKey },
-        },
-      )
-      .then((res) => {
-        console.log(res);
-        setTodolists([res.data.data.item, ...todolists]);
-      });
+    todolistsApi.createTodolist(title).then((res) => {
+      const newTodolist = res.data.data.item;
+      setTodolists([newTodolist, ...todolists]);
+      setTasks({ ...tasks, [res.data.data.item.id]: [] });
+    });
   };
 
   const removeTodolistHandler = (id: string) => {
-    axios
-      .delete<DeleteTodolistResponse>(`https://social-network.samuraijs.com/api/1.1/todo-lists/${id}`, {
-        headers: { Authorization: tkKey, "API-KEY": apiKey },
-      })
-      .then((res) => {
-        setTodolists(todolists.filter((tl) => tl.id !== id));
-        const copyTasks = { ...tasks };
-        delete copyTasks[id];
-        setTasks(copyTasks);
-      });
+    todolistsApi.deleteTodolist(id).then((res) => {
+      const newTodolists = todolists.filter((item) => item.id !== id);
+      setTodolists(newTodolists);
+    });
   };
 
   const updateTodolistHandler = (id: string, title: string) => {
-    axios
-      .put<UpdateTodolistResponse>(
-        `https://social-network.samuraijs.com/api/1.1/todo-lists/${id}`,
-        { title },
-        {
-          headers: { Authorization: tkKey, "API-KEY": apiKey },
-        },
-      )
-      .then((res) => {
-        setTodolists(todolists.map((tl) => (tl.id === id ? { ...tl, title } : tl)));
-      });
+    todolistsApi.updateTodolist({ id, title }).then((res) => {
+      const newTodolists = todolists.map((item) => (item.id === id ? { ...item, title } : item));
+      setTodolists(newTodolists);
+    });
   };
 
-  const createTaskHandler = (title: string, todolistId: string) => {
-    axios
-      .post<CreateTaskResponse>(
-        `https://social-network.samuraijs.com/api/1.1/todo-lists/${todolistId}/tasks`,
-        { title },
-        {
-          headers: { Authorization: tkKey, "API-KEY": apiKey },
-        },
-      )
-      .then((res) => {
-        const newTask = res.data.data.item;
-        setTasks({ ...tasks, [todolistId]: tasks[todolistId] ? [newTask, ...tasks[todolistId]] : [newTask] });
-      });
+  const createTaskHandler = (todolistId: string, title: string) => {
+    tasksApi.createTask({ todolistId, title }).then((res) => {
+      const newTask = res.data.data.item;
+      setTasks({ ...tasks, [todolistId]: [newTask, ...tasks[todolistId]] });
+    });
   };
 
-  const removeTaskHandler = (taskId: string, todolistId: string) => {
-    axios
-      .delete<DeleteTaskResponse>(
-        `https://social-network.samuraijs.com/api/1.1/todo-lists/${todolistId}/tasks/${taskId}`,
-        {
-          headers: { Authorization: tkKey, "API-KEY": apiKey },
-        },
-      )
-      .then((res) => {
-        console.log(res.data);
-        setTasks({
-          ...tasks,
-          [todolistId]: tasks[todolistId].filter((t) => t.id !== taskId),
-        });
-      });
+  const removeTaskHandler = (todolistId: string, taskId: string) => {
+    tasksApi.deleteTask({ todolistId, taskId }).then((res) => {
+      setTasks({ ...tasks, [todolistId]: tasks[todolistId].filter((t) => t.id !== taskId) });
+    });
   };
 
-  const changeTaskStatusHandler = (e: ChangeEvent<HTMLInputElement>, task: DomainTask) => {
-    const status = e.currentTarget.checked ? 2 : 0;
-    const model: UpdateTaskModel = {
-      status,
-      title: task.title,
-      deadline: task.deadline,
-      description: task.description,
-      priority: task.priority,
-      startDate: task.startDate,
-    };
-
-    axios
-      .put<UpdateTaskResponse>(
-        `https://social-network.samuraijs.com/api/1.1/todo-lists/${task.todoListId}/tasks/${task.id}`,
-        model,
-        {
-          headers: { Authorization: tkKey, "API-KEY": apiKey },
-        },
-      )
-      .then((res) => {
-        // console.log(res.data);
-        setTasks({
-          ...tasks,
-          [task.todoListId]: tasks[task.todoListId].map((t) => (t.id === task.id ? { ...t, ...model } : t)),
-        });
-      });
-  };
-
-  const changeTaskTitleHandler = (title: string, task: any) => {
-    const model: UpdateTaskModel = {
-      status: task.status,
-      title: title,
-      deadline: task.deadline,
-      description: task.description,
-      priority: task.priority,
-      startDate: task.startDate,
-    };
-
-    axios
-      .put<UpdateTaskResponse>(
-        `https://social-network.samuraijs.com/api/1.1/todo-lists/${task.todoListId}/tasks/${task.id}`,
-        model,
-        {
-          headers: { Authorization: tkKey, "API-KEY": apiKey },
-        },
-      )
-      .then((res) => {
-        // console.log(res.data);
-        setTasks({
-          ...tasks,
-          [task.todoListId]: tasks[task.todoListId].map((t) => (t.id === task.id ? { ...t, ...model } : t)),
-        });
-      });
+  const updateTaskHandler = (task: DomainTask, updateParams: Partial<BaseTask>) => {
+    tasksApi.updateTask({ task, updateParams }).then((res) => {
+      const newTasks = tasks[task.todoListId].map((t) => (t.id === task.id ? res.data.data.item : t));
+      setTasks({ ...tasks, [task.todoListId]: newTasks });
+    });
   };
 
   return (
@@ -170,16 +79,23 @@ export const AppHttpRequests = () => {
               <EditableSpan value={tl.title} onChange={(title: string) => updateTodolistHandler(tl.id, title)} />
               <button onClick={() => removeTodolistHandler(tl.id)}>x</button>
             </div>
-            <AddItemForm addItem={(title) => createTaskHandler(title, tl.id)} />
+            <AddItemForm addItem={(title) => createTaskHandler(tl.id, title)} />
 
             {/* Tasks */}
             {!!tasks[tl.id] &&
               tasks[tl.id].map((task: DomainTask) => {
                 return (
                   <div key={task.id}>
-                    <Checkbox checked={task.status === 2} onChange={(e) => changeTaskStatusHandler(e, task)} />
-                    <EditableSpan value={task.title} onChange={(title) => changeTaskTitleHandler(title, task)} />
-                    <button onClick={() => removeTaskHandler(task.id, tl.id)}>x</button>
+                    <Checkbox
+                      checked={task.status === 2}
+                      onChange={(e) =>
+                        updateTaskHandler(task, {
+                          status: e.currentTarget.checked ? TaskStatus.Completed : TaskStatus.New,
+                        })
+                      }
+                    />
+                    <EditableSpan value={task.title} onChange={(title) => updateTaskHandler(task, { title })} />
+                    <button onClick={() => removeTaskHandler(tl.id, task.id)}>x</button>
                   </div>
                 );
               })}
@@ -199,92 +115,4 @@ const todolist: React.CSSProperties = {
   display: "flex",
   justifyContent: "space-between",
   flexDirection: "column",
-};
-
-// todolists types
-export type Todolist = {
-  addedDate: string;
-  id: string;
-  order: number;
-  title: string;
-};
-
-type FieldError = {
-  error: string;
-  field: string;
-};
-
-type CreateTodolistResponse = {
-  resultCode: number;
-  messages: string[];
-  fieldsErrors: FieldError[];
-  data: {
-    item: Todolist;
-  };
-};
-
-type DeleteTodolistResponse = {
-  resultCode: number;
-  messages: string[];
-  fieldsErrors: FieldError[];
-  data: {};
-};
-
-type UpdateTodolistResponse = {
-  resultCode: number;
-  messages: string[];
-  fieldsErrors: FieldError[];
-  data: {};
-};
-
-// tasks types
-type DomainTask = {
-  description: string;
-  title: string;
-  status: number;
-  priority: number;
-  startDate: string;
-  deadline: string;
-  id: string;
-  todoListId: string;
-  order: number;
-  addedDate: string;
-};
-
-type GetTasksResponse = {
-  error: string | null;
-  totalCount: number;
-  items: DomainTask[];
-};
-
-type CreateTaskResponse = {
-  resultCode: number;
-  messages: string[];
-  fieldsErrors: FieldError[];
-  data: {
-    item: DomainTask;
-  };
-};
-
-type UpdateTaskModel = {
-  title: string;
-  description: string;
-  status: number;
-  priority: number;
-  startDate: string;
-  deadline: string;
-};
-
-type UpdateTaskResponse = {
-  resultCode: number;
-  messages: string[];
-  data: {
-    item: DomainTask;
-  };
-};
-
-type DeleteTaskResponse = {
-  resultCode: number;
-  messages: string[];
-  data: {};
 };

@@ -1,10 +1,10 @@
-import { AddItemForm } from "../../../../../common/components/AddItemForm/AddItemForm";
-import { useAppDispatch } from "../../../../../common/hooks/useAppDispatch";
-import { addTaskAC } from "../../../model/tasks-reducer";
-import { TodolistType } from "../../../model/todolists-reducer";
-import { FilterTasksButtons } from "./FilterTasksButtons/FilterTasksButtons";
-import { Tasks } from "./Tasks/Tasks";
-import { TodolistTitle } from "./TodolistTitle/TodolistTitle";
+import { AddItemForm } from "common/components";
+import { useAppDispatch } from "common/hooks";
+import { addTaskAC } from "features/todolists/model/tasks-reducer";
+import type { TodolistType } from "features/todolists/model/todolists-reducer";
+import { FilterTasksButtons } from "features/todolists/ui/Todolists/Todolist/FilterTasksButtons/FilterTasksButtons";
+import { Tasks } from "features/todolists/ui/Todolists/Todolist/Tasks/Tasks";
+import { TodolistTitle } from "features/todolists/ui/Todolists/Todolist/TodolistTitle/TodolistTitle";
 
 type Props = {
   todolist: TodolistType;

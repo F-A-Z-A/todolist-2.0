@@ -1,10 +1,8 @@
-import CssBaseline from "@mui/material/CssBaseline";
-import { ThemeProvider } from "@mui/material/styles";
-import React from "react";
-import { Header } from "../common/components/Header/Header";
-import { useAppSelector } from "../common/hooks/useAppSelector";
-import { getTheme } from "../common/theme/theme";
+import { useAppSelector } from "common/hooks";
 import { selectThemeMode } from "./appSelectors";
+import { getTheme } from "common/theme";
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import { Header } from "common/components";
 import { Main } from "./Main";
 
 export const App = () => {

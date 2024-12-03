@@ -3,13 +3,12 @@ import AppBar from "@mui/material/AppBar";
 import IconButton from "@mui/material/IconButton";
 import Switch from "@mui/material/Switch";
 import Toolbar from "@mui/material/Toolbar";
+import { changeThemeAC } from "app/app-reducer";
+import { selectThemeMode } from "app/appSelectors";
+import { MenuButton } from "common/components";
+import { useAppDispatch, useAppSelector } from "common/hooks";
+import { getTheme } from "common/theme";
 import React from "react";
-import { changeThemeAC } from "../../../app/app-reducer";
-import { selectThemeMode } from "../../../app/appSelectors";
-import { useAppDispatch } from "../../hooks/useAppDispatch";
-import { useAppSelector } from "../../hooks/useAppSelector";
-import { getTheme } from "../../theme/theme";
-import { MenuButton } from "../MenuButton/MenuButton";
 
 export const Header = () => {
   const dispatch = useAppDispatch();

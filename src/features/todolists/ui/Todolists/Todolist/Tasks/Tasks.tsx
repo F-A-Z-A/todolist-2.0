@@ -1,35 +1,36 @@
 import List from "@mui/material/List";
-import { Task } from "./Task/Task";
-import type { TodolistType } from "../../../../model/todolists-reducer";
-import { useAppSelector } from "../../../../../../common/hooks/useAppSelector";
-import { selectTasks } from "../../../../model/tasksSelectors";
+import { useAppSelector } from "common/hooks/useAppSelector";
+import { selectTasks } from "features/todolists/model/tasksSelectors";
+import type { TodolistType } from "features/todolists/model/todolists-reducer";
+import { Task } from "features/todolists/ui/Todolists/Todolist/Tasks/Task";
 
 type Props = {
   todolist: TodolistType;
 };
 
 export const Tasks = ({ todolist }: Props) => {
-  const tasks = useAppSelector(selectTasks)[todolist.id];
+  const tasks = useAppSelector(selectTasks);
 
-  const getTasks = () => {
-    let filteredTasks = tasks;
-    if (todolist.filter === "active") {
-      filteredTasks = tasks.filter((task) => !task.isDone);
-    }
-    if (todolist.filter === "completed") {
-      filteredTasks = tasks.filter((task) => task.isDone);
-    }
-    return filteredTasks;
-  };
+  const allTodolistTasks = tasks[todolist.id];
+
+  let tasksForTodolist = allTodolistTasks;
+
+  if (todolist.filter === "active") {
+    tasksForTodolist = allTodolistTasks.filter((task) => !task.isDone);
+  }
+
+  if (todolist.filter === "completed") {
+    tasksForTodolist = allTodolistTasks.filter((task) => task.isDone);
+  }
 
   return (
     <>
-      {tasks.length === 0 ? (
+      {tasksForTodolist.length === 0 ? (
         <p>Тасок нет</p>
       ) : (
         <List>
-          {getTasks().map((task) => {
-            return <Task key={task.id} task={task} todolist={todolist} />;
+          {tasksForTodolist.map((task) => {
+            return <Task task={task} todolist={todolist} />;
           })}
         </List>
       )}
