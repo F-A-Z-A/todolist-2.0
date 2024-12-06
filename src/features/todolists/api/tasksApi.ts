@@ -1,5 +1,5 @@
+import type { BaseTask, DomainTask, GetTasksResponse } from "features/todolists/api/tasksApi.types";
 import { instance } from "common/instance";
-import type { BaseTask, DomainTask, GetTasksResponse } from "./tasksApi.types";
 import type { BaseResponse } from "common/types";
 
 export const tasksApi = {
@@ -24,6 +24,7 @@ export const tasksApi = {
       priority: task.priority,
       startDate: task.startDate,
     };
+
     return instance.put<BaseResponse<{ item: DomainTask }>>(`todo-lists/${task.todoListId}/tasks/${task.id}`, {
       ...model,
       ...updateParams,
