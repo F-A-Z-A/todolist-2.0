@@ -6,10 +6,9 @@ import Toolbar from "@mui/material/Toolbar";
 import React from "react";
 import { changeThemeAC } from "../../../app/app-reducer";
 import { selectThemeMode } from "../../../app/appSelectors";
-import { useAppDispatch } from "../../hooks/useAppDispatch";
-import { useAppSelector } from "../../hooks/useAppSelector";
-import { getTheme } from "../../theme/theme";
-import { MenuButton } from "../MenuButton/MenuButton";
+import { useAppDispatch, useAppSelector } from "common/hooks";
+import { getTheme } from "common/theme";
+import { MenuButton } from "common/components";
 
 export const Header = () => {
   const dispatch = useAppDispatch();

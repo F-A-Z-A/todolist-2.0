@@ -1,1 +1,1 @@
-export { instance } from "common/instance/instance";
+export { instance } from "./instance";

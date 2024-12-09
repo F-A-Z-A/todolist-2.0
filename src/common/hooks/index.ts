@@ -1,2 +1,2 @@
-export { useAppSelector } from "common/hooks/useAppSelector";
-export { useAppDispatch } from "common/hooks/useAppDispatch";
+export { useAppDispatch } from "./useAppDispatch";
+export { useAppSelector } from "./useAppSelector";
