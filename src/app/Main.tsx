@@ -10,7 +10,7 @@ export const Main = () => {
   const dispatch = useAppDispatch();
 
   const addTodolist = (title: string) => {
-    dispatch(addTodolistTC({ title }));
+    dispatch(addTodolistTC(title));
   };
 
   return (

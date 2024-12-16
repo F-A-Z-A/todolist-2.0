@@ -2,10 +2,10 @@ import Checkbox from "@mui/material/Checkbox";
 import React, { ChangeEvent, useEffect, useState } from "react";
 import { AddItemForm, EditableSpan } from "common/components";
 import { TaskStatus } from "common/enums";
-import { tasksApi } from "features/todolists/api/tasksApi";
-import { DomainTask, UpdateTaskModel } from "features/todolists/api/tasksApi.types";
-import { todolistsApi } from "features/todolists/api/todolistsApi";
-import { Todolist } from "features/todolists/api/todolistsApi.types";
+import { tasksApi } from "../features/todolists/api/tasksApi";
+import { DomainTask, UpdateTaskModel } from "../features/todolists/api/tasksApi.types";
+import { todolistsApi } from "../features/todolists/api/todolistsApi";
+import { Todolist } from "../features/todolists/api/todolistsApi.types";
 
 export const AppHttpRequests = () => {
   const [todolists, setTodolists] = useState<Todolist[]>([]);
@@ -31,7 +31,6 @@ export const AppHttpRequests = () => {
     todolistsApi.createTodolist(title).then((res) => {
       const newTodolist = res.data.data.item;
       setTodolists([newTodolist, ...todolists]);
-      setTasks({ ...tasks, [res.data.data.item.id]: [] });
     });
   };
 

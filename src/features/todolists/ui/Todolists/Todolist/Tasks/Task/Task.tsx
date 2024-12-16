@@ -7,29 +7,29 @@ import { EditableSpan } from "common/components";
 import { useAppDispatch } from "common/hooks/useAppDispatch";
 import { removeTaskTC, updateTaskTC } from "../../../../../model/tasks-reducer";
 import { getListItemSx } from "./Task.styles";
-import type { DomainTodolist } from "features/todolists/model/todolists-reducer";
+import type { TodolistDomainType } from "features/todolists/model/todolists-reducer";
 import type { DomainTask } from "features/todolists/api/tasksApi.types";
 import { TaskStatus } from "common/enums";
 
 type Props = {
   task: DomainTask;
-  todolist: DomainTodolist;
+  todolist: TodolistDomainType;
 };
 
 export const Task = ({ task, todolist }: Props) => {
   const dispatch = useAppDispatch();
 
   const removeTaskHandler = () => {
-    dispatch(removeTaskTC({ todolistId: task.todoListId, taskId: task.id }));
+    dispatch(removeTaskTC({ todolistId: todolist.id, taskId: task.id }));
   };
 
   const changeTaskStatusHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const status = e.currentTarget.checked ? TaskStatus.Completed : TaskStatus.New;
-    dispatch(updateTaskTC({ todolistId: todolist.id, taskId: task.id, updateParams: { status } }));
+    dispatch(updateTaskTC({ task: { ...task, status } }));
   };
 
   const changeTaskTitleHandler = (title: string) => {
-    dispatch(updateTaskTC({ todolistId: todolist.id, taskId: task.id, updateParams: { title } }));
+    dispatch(updateTaskTC({ task: { ...task, title } }));
   };
 
   return (

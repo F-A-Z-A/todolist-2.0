@@ -2,18 +2,19 @@ import List from "@mui/material/List";
 import { useAppSelector } from "common/hooks/useAppSelector";
 import { selectTasks } from "../../../../model/tasksSelectors";
 import { Task } from "./Task/Task";
-import type { DomainTodolist } from "features/todolists/model/todolists-reducer";
-import { TaskStatus } from "common/enums";
-import { useAppDispatch } from "common/hooks";
-import { fetchTasksTC } from "features/todolists/model/tasks-reducer";
+import { type TodolistDomainType } from "features/todolists/model/todolists-reducer";
 import { useEffect } from "react";
+import { fetchTasksTC } from "features/todolists/model/tasks-reducer";
+import { useAppDispatch } from "common/hooks";
+import { TaskStatus } from "common/enums";
 
 type Props = {
-  todolist: DomainTodolist;
+  todolist: TodolistDomainType;
 };
 
 export const Tasks = ({ todolist }: Props) => {
   const tasks = useAppSelector(selectTasks);
+
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -22,7 +23,7 @@ export const Tasks = ({ todolist }: Props) => {
 
   const allTodolistTasks = tasks[todolist.id];
 
-  const getFilteredTasks = () => {
+  const getTasks = () => {
     let tasksForTodolist = allTodolistTasks;
     if (todolist.filter === "active") {
       tasksForTodolist = allTodolistTasks.filter((task) => task.status === TaskStatus.New);
@@ -39,7 +40,7 @@ export const Tasks = ({ todolist }: Props) => {
         <p>Тасок нет</p>
       ) : (
         <List>
-          {getFilteredTasks()?.map((task) => {
+          {getTasks()?.map((task) => {
             return <Task key={task.id} task={task} todolist={todolist} />;
           })}
         </List>

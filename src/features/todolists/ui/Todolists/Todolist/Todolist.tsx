@@ -4,10 +4,10 @@ import { addTaskTC } from "../../../model/tasks-reducer";
 import { FilterTasksButtons } from "./FilterTasksButtons/FilterTasksButtons";
 import { Tasks } from "./Tasks/Tasks";
 import { TodolistTitle } from "./TodolistTitle/TodolistTitle";
-import type { DomainTodolist } from "features/todolists/model/todolists-reducer";
+import type { TodolistDomainType } from "features/todolists/model/todolists-reducer";
 
 type Props = {
-  todolist: DomainTodolist;
+  todolist: TodolistDomainType;
 };
 
 export const Todolist = ({ todolist }: Props) => {
