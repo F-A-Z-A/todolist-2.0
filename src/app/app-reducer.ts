@@ -24,6 +24,6 @@ export const changeThemeAC = (themeMode: ThemeMode) => {
 };
 
 // Actions types
-type ChangeThemeActionType = ReturnType<typeof changeThemeAC>;
+export type ChangeThemeActionType = ReturnType<typeof changeThemeAC>;
 
 type ActionsType = ChangeThemeActionType;
