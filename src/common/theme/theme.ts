@@ -1,5 +1,5 @@
-import { createTheme } from "@mui/material/styles";
-import { ThemeMode } from "../../app/app-reducer";
+import { createTheme } from "@mui/material/styles"
+import { ThemeMode } from "../../app/app-reducer"
 
 export const getTheme = (themeMode: ThemeMode) => {
   return createTheme({
@@ -9,5 +9,5 @@ export const getTheme = (themeMode: ThemeMode) => {
         main: "#087EA4",
       },
     },
-  });
-};
+  })
+}

@@ -1,19 +1,19 @@
-import Paper from "@mui/material/Paper";
-import Grid from "@mui/material/Unstable_Grid2";
-import React, { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "common/hooks";
-import { selectTodolists } from "../../model/todolistsSelectors";
-import { Todolist } from "./Todolist/Todolist";
-import { fetchTodolistsTC } from "features/todolists/model/todolists-reducer";
+import Paper from "@mui/material/Paper"
+import Grid from "@mui/material/Unstable_Grid2"
+import React, { useEffect } from "react"
+import { useAppDispatch, useAppSelector } from "common/hooks"
+import { fetchTodolistsTC } from "../../model/todolists-reducer"
+import { selectTodolists } from "../../model/todolistsSelectors"
+import { Todolist } from "./Todolist/Todolist"
 
 export const Todolists = () => {
-  const todolists = useAppSelector(selectTodolists);
+  const todolists = useAppSelector(selectTodolists)
 
-  const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch()
 
   useEffect(() => {
-    dispatch(fetchTodolistsTC());
-  }, []);
+    dispatch(fetchTodolistsTC())
+  }, [])
 
   return (
     <>
@@ -24,8 +24,8 @@ export const Todolists = () => {
               <Todolist key={tl.id} todolist={tl} />
             </Paper>
           </Grid>
-        );
+        )
       })}
     </>
-  );
-};
+  )
+}
