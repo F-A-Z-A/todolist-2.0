@@ -31,6 +31,7 @@ export const AddItemForm = ({ addItem, disabled }: Props) => {
       addItemHandler()
     }
   }
+
   return (
     <div>
       <TextField

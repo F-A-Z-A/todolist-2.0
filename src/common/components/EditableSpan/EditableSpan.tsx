@@ -7,12 +7,15 @@ type Props = {
   disabled?: boolean
 }
 
-export const EditableSpan = ({ value, onChange, disabled }: Props) => {
+export const EditableSpan = ({ value, onChange, disabled = false }: Props) => {
   const [editMode, setEditMode] = useState(false)
   const [title, setTitle] = useState(value)
 
   const activateEditModeHandler = () => {
-    if (!disabled) setEditMode(true)
+    if (disabled) {
+      return
+    }
+    setEditMode(true)
   }
 
   const deactivateEditModeHandler = () => {
