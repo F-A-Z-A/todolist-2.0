@@ -13,8 +13,8 @@ import s from "./App.module.css"
 
 export const App = () => {
   const themeMode = useAppSelector(selectThemeMode)
-  const dispatch = useAppDispatch()
   const isInitialized = useAppSelector(selectIsInitialized)
+  const dispatch = useAppDispatch()
 
   useEffect(() => {
     dispatch(initializeAppTC())

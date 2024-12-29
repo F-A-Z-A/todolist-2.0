@@ -15,12 +15,10 @@ import { logoutTC } from "features/auth/model/auth-reducer"
 
 export const Header = () => {
   const dispatch = useAppDispatch()
-
   const themeMode = useAppSelector(selectThemeMode)
   const status = useAppSelector(selectAppStatus)
-  const isLoggedIn = useAppSelector(selectIsLoggedIn)
-
   const theme = getTheme(themeMode)
+  const isLoggedIn = useAppSelector(selectIsLoggedIn)
 
   const changeModeHandler = () => {
     dispatch(changeThemeAC(themeMode === "light" ? "dark" : "light"))

@@ -6,7 +6,7 @@ import { Page404 } from "common/components"
 export const Path = {
   Main: "/",
   Login: "/login",
-  NotFound: "*",
+  NotFound: "/*",
 } as const
 
 export const Routing = () => {

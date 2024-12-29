@@ -1,4 +1,5 @@
 import Button from "@mui/material/Button"
+import Checkbox from "@mui/material/Checkbox"
 import FormControl from "@mui/material/FormControl"
 import FormControlLabel from "@mui/material/FormControlLabel"
 import FormGroup from "@mui/material/FormGroup"
@@ -10,18 +11,17 @@ import { getTheme } from "common/theme"
 import { selectThemeMode } from "app/appSelectors"
 import { Controller, type SubmitHandler, useForm } from "react-hook-form"
 import s from "./Login.module.css"
-import Checkbox from "@mui/material/Checkbox"
 import { loginTC } from "features/auth/model/auth-reducer"
-import { useNavigate } from "react-router"
 import { selectIsLoggedIn } from "features/auth/model/authSelectors"
+import { useNavigate } from "react-router"
 import { useEffect } from "react"
 import { Path } from "common/routing/Routing"
 
 export const Login = () => {
   const themeMode = useAppSelector(selectThemeMode)
-  const isLoggedIn = useAppSelector(selectIsLoggedIn)
   const theme = getTheme(themeMode)
   const dispatch = useAppDispatch()
+  const isLoggedIn = useAppSelector(selectIsLoggedIn)
   const navigate = useNavigate()
 
   const {
@@ -98,17 +98,11 @@ export const Login = () => {
                 label={"Remember me"}
                 control={
                   <Controller
-                    name={"rememberMe"}
+                    name="rememberMe"
                     control={control}
-                    // --- для зачистки Checkbox, делаем так
-                    // render={({ field: { value, ...rest } }) => <Checkbox {...rest} checked={value} />}
-                    // --- или так (по документации)
-                    render={({ field: { onChange, value } }) => (
-                      <Checkbox onChange={(e) => onChange(e.target.checked)} checked={value} />
-                    )}
+                    render={({ field: { value, ...rest } }) => <Checkbox {...rest} checked={value} />}
                   />
                 }
-                {...register("rememberMe")}
               />
               <Button type={"submit"} variant={"contained"} color={"primary"}>
                 Login
@@ -122,8 +116,9 @@ export const Login = () => {
 }
 
 // types
-type Inputs = {
+export type Inputs = {
   email: string
   password: string
   rememberMe: boolean
+  captcha: boolean
 }

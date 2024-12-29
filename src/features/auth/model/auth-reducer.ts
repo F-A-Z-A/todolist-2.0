@@ -1,29 +1,31 @@
 import { setAppStatusAC } from "app/app-reducer"
-import { handleServerNetworkError } from "common/utils/handleServerNetworkError"
+import type { Inputs } from "features/auth/ui/Login/Login"
+import { authApi } from "features/auth/api/authApi"
 import { ResultCode } from "common/enums"
 import { handleServerAppError } from "common/utils/handleServerAppError"
-import type { LoginArgs } from "features/auth/api/authApi.types"
-import { authApi } from "features/auth/api/authApi"
-import { clearTodolistsDataAC } from "features/todolists/model/todolists-reducer"
+import { handleServerNetworkError } from "common/utils/handleServerNetworkError"
 import type { AppDispatch } from "app/store"
+import { clearDataAC } from "features/todolists/model/todolists-reducer"
 
 const initialState = {
   isLoggedIn: false,
   isInitialized: false,
 }
 
-export const authReducer = (state: InitialStateType = initialState, action: ActionsType): InitialStateType => {
+export const authReducer = (state: initialStateType = initialState, action: ActionsType): initialStateType => {
   switch (action.type) {
-    case "SET_IS_LOGGED_IN":
+    case "SET_IS_LOGGED_IN": {
       return { ...state, isLoggedIn: action.payload.isLoggedIn }
+    }
     case "SET_IS_INITIALIZED":
       return { ...state, isInitialized: action.payload.isInitialized }
     default:
       return state
   }
 }
+
 // actions
-const setIsLoggedInAC = (isLoggedIn: boolean) => {
+export const setIsLoggedInAC = (isLoggedIn: boolean) => {
   return { type: "SET_IS_LOGGED_IN", payload: { isLoggedIn } } as const
 }
 
@@ -32,7 +34,7 @@ const setIsInitializedAC = (isInitialized: boolean) => {
 }
 
 // thunks
-export const loginTC = (data: LoginArgs) => (dispatch: AppDispatch) => {
+export const loginTC = (data: Inputs) => (dispatch: AppDispatch) => {
   dispatch(setAppStatusAC("loading"))
   authApi
     .login(data)
@@ -45,8 +47,8 @@ export const loginTC = (data: LoginArgs) => (dispatch: AppDispatch) => {
         handleServerAppError(res.data, dispatch)
       }
     })
-    .catch((err) => {
-      handleServerNetworkError(err, dispatch)
+    .catch((error) => {
+      handleServerNetworkError(error, dispatch)
     })
 }
 
@@ -57,15 +59,15 @@ export const logoutTC = () => (dispatch: AppDispatch) => {
     .then((res) => {
       if (res.data.resultCode === ResultCode.Success) {
         dispatch(setIsLoggedInAC(false))
+        dispatch(clearDataAC())
         localStorage.removeItem("sn-token")
-        dispatch(clearTodolistsDataAC())
         dispatch(setAppStatusAC("succeeded"))
       } else {
         handleServerAppError(res.data, dispatch)
       }
     })
-    .catch((err) => {
-      handleServerNetworkError(err, dispatch)
+    .catch((error) => {
+      handleServerNetworkError(error, dispatch)
     })
 }
 
@@ -81,8 +83,8 @@ export const initializeAppTC = () => (dispatch: AppDispatch) => {
         handleServerAppError(res.data, dispatch)
       }
     })
-    .catch((err) => {
-      handleServerNetworkError(err, dispatch)
+    .catch((error) => {
+      handleServerNetworkError(error, dispatch)
     })
     .finally(() => {
       dispatch(setIsInitializedAC(true))
@@ -90,5 +92,6 @@ export const initializeAppTC = () => (dispatch: AppDispatch) => {
 }
 
 // types
-type InitialStateType = typeof initialState
+type initialStateType = typeof initialState
+
 type ActionsType = ReturnType<typeof setIsLoggedInAC> | ReturnType<typeof setIsInitializedAC>

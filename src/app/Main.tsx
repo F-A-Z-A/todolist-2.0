@@ -6,8 +6,8 @@ import { useAppDispatch, useAppSelector } from "common/hooks"
 import { addTodolistTC } from "features/todolists/model/todolists-reducer"
 import { Todolists } from "features/todolists/ui/Todolists/Todolists"
 import { selectIsLoggedIn } from "features/auth/model/authSelectors"
-import { Path } from "common/routing/Routing"
 import { useNavigate } from "react-router"
+import { Path } from "common/routing/Routing"
 
 export const Main = () => {
   const dispatch = useAppDispatch()

@@ -2,14 +2,10 @@ import { ResultCode } from "common/enums"
 import { handleServerAppError } from "common/utils/handleServerAppError"
 import { handleServerNetworkError } from "common/utils/handleServerNetworkError"
 import { setAppStatusAC } from "app/app-reducer"
-import { type AppDispatch } from "app/store"
 import { tasksApi } from "../api/tasksApi"
 import { DomainTask, UpdateTaskModel } from "../api/tasksApi.types"
-import { AddTodolistActionType, type ClearTodolistsDataActionType, RemoveTodolistActionType } from "./todolists-reducer"
-
-export type TasksStateType = {
-  [key: string]: DomainTask[]
-}
+import { AddTodolistActionType, type ClearDataActionType, RemoveTodolistActionType } from "./todolists-reducer"
+import type { AppDispatch } from "app/store"
 
 const initialState: TasksStateType = {}
 
@@ -53,7 +49,7 @@ export const tasksReducer = (state: TasksStateType = initialState, action: Actio
       return copyState
     }
 
-    case "CLEAR-TODOLISTS":
+    case "CLEAR-DATA":
       return {}
 
     default:
@@ -66,7 +62,7 @@ export const setTasksAC = (payload: { todolistId: string; tasks: DomainTask[] })
   return { type: "SET-TASKS", payload } as const
 }
 
-export const removeTaskAC = (payload: { todolistId: string; taskId: string }) => {
+export const removeTaskAC = (payload: { taskId: string; todolistId: string }) => {
   return { type: "REMOVE-TASK", payload } as const
 }
 
@@ -77,12 +73,6 @@ export const addTaskAC = (payload: { task: DomainTask }) => {
 export const updateTaskAC = (payload: { task: DomainTask }) => {
   return { type: "UPDATE-TASK", payload } as const
 }
-
-// Actions types
-export type SetTasksActionType = ReturnType<typeof setTasksAC>
-export type RemoveTaskActionType = ReturnType<typeof removeTaskAC>
-export type AddTaskActionType = ReturnType<typeof addTaskAC>
-export type UpdateTaskActionType = ReturnType<typeof updateTaskAC>
 
 // Thunks
 export const fetchTasksTC = (todolistId: string) => (dispatch: AppDispatch) => {
@@ -98,7 +88,7 @@ export const fetchTasksTC = (todolistId: string) => (dispatch: AppDispatch) => {
     })
 }
 
-export const removeTaskTC = (arg: { todolistId: string; taskId: string }) => (dispatch: AppDispatch) => {
+export const removeTaskTC = (arg: { taskId: string; todolistId: string }) => (dispatch: AppDispatch) => {
   dispatch(setAppStatusAC("loading"))
   tasksApi
     .deleteTask(arg)
@@ -115,7 +105,7 @@ export const removeTaskTC = (arg: { todolistId: string; taskId: string }) => (di
     })
 }
 
-export const addTaskTC = (arg: { todolistId: string; title: string }) => (dispatch: AppDispatch) => {
+export const addTaskTC = (arg: { title: string; todolistId: string }) => (dispatch: AppDispatch) => {
   dispatch(setAppStatusAC("loading"))
   tasksApi
     .createTask(arg)
@@ -144,7 +134,7 @@ export const updateTaskTC = (task: DomainTask) => (dispatch: AppDispatch) => {
 
   dispatch(setAppStatusAC("loading"))
   tasksApi
-    .updateTask({ todolistId: task.todoListId, taskId: task.id, model })
+    .updateTask({ taskId: task.id, todolistId: task.todoListId, model })
     .then((res) => {
       if (res.data.resultCode === ResultCode.Success) {
         dispatch(setAppStatusAC("succeeded"))
@@ -158,6 +148,16 @@ export const updateTaskTC = (task: DomainTask) => (dispatch: AppDispatch) => {
     })
 }
 
+// types
+export type TasksStateType = {
+  [key: string]: DomainTask[]
+}
+
+export type SetTasksActionType = ReturnType<typeof setTasksAC>
+export type RemoveTaskActionType = ReturnType<typeof removeTaskAC>
+export type AddTaskActionType = ReturnType<typeof addTaskAC>
+export type UpdateTaskActionType = ReturnType<typeof updateTaskAC>
+
 type ActionsType =
   | RemoveTaskActionType
   | AddTaskActionType
@@ -165,4 +165,4 @@ type ActionsType =
   | AddTodolistActionType
   | RemoveTodolistActionType
   | SetTasksActionType
-  | ClearTodolistsDataActionType
+  | ClearDataActionType

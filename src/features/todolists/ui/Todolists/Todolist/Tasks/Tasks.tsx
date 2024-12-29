@@ -12,11 +12,6 @@ type Props = {
 export const Tasks = ({ todolist }: Props) => {
   const tasks = useAppSelector(selectTasks)
 
-  // const dispatch = useAppDispatch()
-  // useEffect(() => {
-  //   dispatch(fetchTasksTC(todolist.id))
-  // }, [])
-
   const allTodolistTasks = tasks[todolist.id]
 
   const getTasks = () => {
