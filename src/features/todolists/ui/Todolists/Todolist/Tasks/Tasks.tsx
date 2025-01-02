@@ -1,8 +1,9 @@
 import List from "@mui/material/List"
+import { useEffect } from "react"
 import { TaskStatus } from "common/enums"
-import { useAppSelector } from "common/hooks"
-import { selectTasks } from "../../../../model/tasksSelectors"
-import { DomainTodolist } from "../../../../model/todolists-reducer"
+import { useAppDispatch, useAppSelector } from "common/hooks"
+import { fetchTasksTC, selectTasks } from "features/todolists/model/tasksSlice"
+import { DomainTodolist } from "features/todolists/model/todolistsSlice"
 import { Task } from "./Task/Task"
 
 type Props = {
@@ -11,6 +12,12 @@ type Props = {
 
 export const Tasks = ({ todolist }: Props) => {
   const tasks = useAppSelector(selectTasks)
+
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    dispatch(fetchTasksTC(todolist.id))
+  }, [])
 
   const allTodolistTasks = tasks[todolist.id]
 

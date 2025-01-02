@@ -1,28 +1,25 @@
 import Container from "@mui/material/Container"
 import Grid from "@mui/material/Unstable_Grid2"
-import React, { useEffect } from "react"
+import { Path } from "common/router"
 import { AddItemForm } from "common/components"
 import { useAppDispatch, useAppSelector } from "common/hooks"
-import { addTodolistTC } from "features/todolists/model/todolists-reducer"
+import { Navigate } from "react-router-dom"
+import { addTodolistTC } from "features/todolists/model/todolistsSlice"
 import { Todolists } from "features/todolists/ui/Todolists/Todolists"
-import { selectIsLoggedIn } from "features/auth/model/authSelectors"
-import { useNavigate } from "react-router"
-import { Path } from "common/routing/Routing"
+import { selectIsLoggedIn } from "features/auth/model/authSlice"
 
 export const Main = () => {
   const dispatch = useAppDispatch()
+
   const isLoggedIn = useAppSelector(selectIsLoggedIn)
-  const navigate = useNavigate()
 
   const addTodolist = (title: string) => {
     dispatch(addTodolistTC(title))
   }
 
-  useEffect(() => {
-    if (!isLoggedIn) {
-      navigate(Path.Login)
-    }
-  }, [isLoggedIn])
+  if (!isLoggedIn) {
+    return <Navigate to={Path.Login} />
+  }
 
   return (
     <Container fixed>

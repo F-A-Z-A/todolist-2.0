@@ -1,10 +1,10 @@
-import type { Inputs } from "features/auth/ui/Login/Login"
 import { instance } from "common/instance"
-import type { BaseResponse } from "common/types"
+import { BaseResponse } from "common/types"
+import { LoginArgs } from "./authAPI.types"
 
 export const authApi = {
-  login(payload: Inputs) {
-    return instance.post<BaseResponse<{ userId: number; token: string }>>("auth/login", payload)
+  login(payload: LoginArgs) {
+    return instance.post<BaseResponse<{ userId: number; token: string }>>(`auth/login`, payload)
   },
   logout() {
     return instance.delete<BaseResponse>("auth/login")
