@@ -18,6 +18,7 @@ export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch
 
 // export const store = legacy_createStore(rootReducer, {}, applyMiddleware(thunk))
+// Создаем тип диспатча который принимает как AC так и TC
 // export type AppDispatch = ThunkDispatch<RootState, unknown, UnknownAction>
 
 // @ts-ignore

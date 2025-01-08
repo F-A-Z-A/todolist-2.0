@@ -2,16 +2,19 @@ import { createSlice } from "@reduxjs/toolkit"
 
 export const appSlice = createSlice({
   name: "app",
+
   initialState: {
     themeMode: "light" as ThemeMode,
     status: "idle" as RequestStatus,
-    error: null as ErrorStatus,
+    error: null as string | null,
   },
+
   selectors: {
     selectThemeMode: (state) => state.themeMode,
     selectAppStatus: (state) => state.status,
     selectAppError: (state) => state.error,
   },
+
   reducers: (create) => ({
     changeTheme: create.reducer<{ themeMode: ThemeMode }>((state, action) => {
       state.themeMode = action.payload.themeMode

@@ -10,7 +10,7 @@ import { useAppDispatch, useAppSelector } from "common/hooks"
 import { getTheme } from "common/theme"
 import { Controller, SubmitHandler, useForm } from "react-hook-form"
 import { Navigate } from "react-router-dom"
-import { loginTC, selectIsLoggedIn } from "features/auth/model/authSlice"
+import { login, selectIsLoggedIn } from "features/auth/model/authSlice"
 import s from "./Login.module.css"
 import { selectThemeMode } from "app/appSlice"
 
@@ -36,7 +36,7 @@ export const Login = () => {
   } = useForm<Inputs>({ defaultValues: { email: "", password: "", rememberMe: false } })
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    dispatch(loginTC(data))
+    dispatch(login(data))
     reset()
   }
 
