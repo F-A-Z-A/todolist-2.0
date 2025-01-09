@@ -1,6 +1,6 @@
 import { BaseResponse } from "common/types"
 import { Dispatch } from "redux"
-import { setAppError, setAppStatus } from "app/appSlice"
+import { setAppError, setAppStatus } from "../../app/appSlice"
 
 export const handleServerAppError = <T>(data: BaseResponse<T>, dispatch: Dispatch) => {
   if (data.messages.length) {

@@ -1,15 +1,14 @@
 import { EditableSpan } from "common/components"
 import { TaskStatus } from "common/enums"
-import { useAppDispatch } from "common/hooks"
-import { DomainTask } from "../../../../../api/tasksApi.types"
-import { removeTask, updateTask } from "features/todolists/model/tasksSlice"
-import { DomainTodolist } from "features/todolists/model/todolistsSlice"
+import { DomainTask, type UpdateTaskModel } from "../../../../../api/tasksApi.types"
+import { DomainTodolist } from "../../../../../model/todolistsSlice"
 import { getListItemSx } from "./Task.styles"
 import { ChangeEvent } from "react"
 import DeleteIcon from "@mui/icons-material/Delete"
 import Checkbox from "@mui/material/Checkbox"
 import IconButton from "@mui/material/IconButton"
 import ListItem from "@mui/material/ListItem"
+import { useDeleteTaskMutation, useUpdateTaskMutation } from "features/todolists/api/tasksApi"
 
 type Props = {
   task: DomainTask
@@ -17,19 +16,32 @@ type Props = {
 }
 
 export const Task = ({ task, todolist }: Props) => {
-  const dispatch = useAppDispatch()
+  const [updateTask] = useUpdateTaskMutation()
+  const [removeTask] = useDeleteTaskMutation()
 
   const removeTaskHandler = () => {
-    dispatch(removeTask({ taskId: task.id, todolistId: todolist.id }))
+    removeTask({ taskId: task.id, todolistId: todolist.id })
   }
+
+  const modelCreator = (updateParams: Partial<UpdateTaskModel>) => ({
+    status: task.status,
+    title: task.title,
+    deadline: task.deadline,
+    description: task.description,
+    priority: task.priority,
+    startDate: task.startDate,
+    ...updateParams,
+  })
 
   const changeTaskStatusHandler = (e: ChangeEvent<HTMLInputElement>) => {
     let status = e.currentTarget.checked ? TaskStatus.Completed : TaskStatus.New
-    dispatch(updateTask({ ...task, status }))
+    const model = modelCreator({ status })
+    updateTask({ taskId: task.id, todolistId: todolist.id, model })
   }
 
   const changeTaskTitleHandler = (title: string) => {
-    dispatch(updateTask({ ...task, title }))
+    const model = modelCreator({ title })
+    updateTask({ taskId: task.id, todolistId: todolist.id, model })
   }
 
   const disabled = todolist.entityStatus === "loading"
