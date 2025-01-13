@@ -12,17 +12,12 @@ import { useMeQuery } from "features/auth/api/authAPI"
 import { ResultCode } from "common/enums"
 
 export const App = () => {
-  // const themeMode = useAppSelector(selectThemeMode)
-  // const isInitialized = useAppSelector(selectIsInitialized)
-  // const dispatch = useAppDispatch()
-  // useEffect(() => {
-  //   dispatch(initializeAppTC())
-  // }, [])
-
-  const [isInitialized, setIsInitialized] = useState(false)
-  const { data, isLoading } = useMeQuery()
+  const [isInitialized, setIsInitialized] = useState<boolean>(false)
   const themeMode = useAppSelector(selectThemeMode)
+
   const dispatch = useAppDispatch()
+
+  const { data, isLoading } = useMeQuery()
 
   useEffect(() => {
     if (!isLoading) {

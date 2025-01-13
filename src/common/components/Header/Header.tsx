@@ -15,30 +15,23 @@ import { clearTodolists } from "features/todolists/model/todolistsSlice"
 
 export const Header = () => {
   const dispatch = useAppDispatch()
-
   const themeMode = useAppSelector(selectThemeMode)
   const status = useAppSelector(selectAppStatus)
   const isLoggedIn = useAppSelector(selectIsLoggedIn)
-
+  const [logout] = useLogoutMutation()
   const theme = getTheme(themeMode)
 
   const changeModeHandler = () => {
     dispatch(changeTheme({ themeMode: themeMode === "light" ? "dark" : "light" }))
   }
 
-  const [logout] = useLogoutMutation()
-
-  // const logoutHandler = () => {
-  //   dispatch(logoutTC())
-  // }
-
   const logoutHandler = () => {
     logout().then((res) => {
       if (res.data?.resultCode === ResultCode.Success) {
         dispatch(setIsLoggedIn({ isLoggedIn: false }))
-        localStorage.removeItem("sn-token")
         dispatch(clearTasks())
         dispatch(clearTodolists())
+        localStorage.removeItem("sn-token")
       }
     })
   }

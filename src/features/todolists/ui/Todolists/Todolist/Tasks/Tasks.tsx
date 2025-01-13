@@ -11,23 +11,24 @@ type Props = {
 export const Tasks = ({ todolist }: Props) => {
   const { data } = useGetTasksQuery(todolist.id)
 
-  let tasksForTodolist = data?.items
-
-  if (todolist.filter === "active") {
-    tasksForTodolist = tasksForTodolist?.filter((task) => task.status === TaskStatus.New)
-  }
-
-  if (todolist.filter === "completed") {
-    tasksForTodolist = tasksForTodolist?.filter((task) => task.status === TaskStatus.Completed)
+  const getTasks = () => {
+    let tasksForTodolist = data?.items
+    if (todolist.filter === "active") {
+      tasksForTodolist = tasksForTodolist?.filter((task) => task.status === TaskStatus.New)
+    }
+    if (todolist.filter === "completed") {
+      tasksForTodolist = tasksForTodolist?.filter((task) => task.status === TaskStatus.Completed)
+    }
+    return tasksForTodolist
   }
 
   return (
     <>
-      {tasksForTodolist?.length === 0 ? (
+      {data?.items.length === 0 ? (
         <p>Тасок нет</p>
       ) : (
         <List>
-          {tasksForTodolist?.map((task) => {
+          {getTasks()?.map((task) => {
             return <Task key={task.id} task={task} todolist={todolist} />
           })}
         </List>

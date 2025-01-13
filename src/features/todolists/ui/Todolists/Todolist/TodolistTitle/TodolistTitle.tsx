@@ -3,7 +3,7 @@ import IconButton from "@mui/material/IconButton"
 import { EditableSpan } from "common/components"
 import { DomainTodolist } from "../../../../model/todolistsSlice"
 import s from "./TodolistTitle.module.css"
-import { useRemoveTodolistMutation, useUpdateTodolistTitleMutation } from "features/todolists/api/todolistsApi"
+import { useRemoveTodolistMutation, useUpdateTodolistMutation } from "features/todolists/api/todolistsApi"
 
 type Props = {
   todolist: DomainTodolist
@@ -13,7 +13,7 @@ export const TodolistTitle = ({ todolist }: Props) => {
   const { title, id, entityStatus } = todolist
 
   const [removeTodolist] = useRemoveTodolistMutation()
-  const [updateTodolistTitle] = useUpdateTodolistTitleMutation()
+  const [updateTodolistTitle] = useUpdateTodolistMutation()
 
   const removeTodolistHandler = () => {
     removeTodolist(id)

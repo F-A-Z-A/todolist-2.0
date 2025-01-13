@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit"
 import { tasksReducer, tasksSlice } from "features/todolists/model/tasksSlice"
 import { todolistsReducer, todolistsSlice } from "features/todolists/model/todolistsSlice"
 import { appReducer, appSlice } from "./appSlice"
-import { setupListeners } from "@reduxjs/toolkit/query/react"
+import { setupListeners } from "@reduxjs/toolkit/query"
 import { baseApi } from "app/baseApi"
 
 export const store = configureStore({

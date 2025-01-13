@@ -8,7 +8,7 @@ import DeleteIcon from "@mui/icons-material/Delete"
 import Checkbox from "@mui/material/Checkbox"
 import IconButton from "@mui/material/IconButton"
 import ListItem from "@mui/material/ListItem"
-import { useDeleteTaskMutation, useUpdateTaskMutation } from "features/todolists/api/tasksApi"
+import { useRemoveTaskMutation, useUpdateTaskMutation } from "features/todolists/api/tasksApi"
 
 type Props = {
   task: DomainTask
@@ -16,20 +16,20 @@ type Props = {
 }
 
 export const Task = ({ task, todolist }: Props) => {
+  const [removeTask] = useRemoveTaskMutation()
   const [updateTask] = useUpdateTaskMutation()
-  const [removeTask] = useDeleteTaskMutation()
 
   const removeTaskHandler = () => {
     removeTask({ taskId: task.id, todolistId: todolist.id })
   }
 
-  const modelCreator = (updateParams: Partial<UpdateTaskModel>) => ({
+  const modelCreator = (updateParams: Partial<UpdateTaskModel>): UpdateTaskModel => ({
     status: task.status,
-    title: task.title,
-    deadline: task.deadline,
-    description: task.description,
-    priority: task.priority,
     startDate: task.startDate,
+    priority: task.priority,
+    deadline: task.deadline,
+    title: task.title,
+    description: task.description,
     ...updateParams,
   })
 

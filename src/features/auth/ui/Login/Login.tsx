@@ -12,8 +12,8 @@ import { Controller, SubmitHandler, useForm } from "react-hook-form"
 import { Navigate } from "react-router-dom"
 import { selectIsLoggedIn, selectThemeMode, setIsLoggedIn } from "app/appSlice"
 import s from "./Login.module.css"
+import { LoginArgs } from "features/auth/api/authAPI.types"
 import { useLoginMutation } from "features/auth/api/authAPI"
-import type { LoginArgs } from "features/auth/api/authAPI.types"
 import { ResultCode } from "common/enums"
 
 type Inputs = {
@@ -26,10 +26,8 @@ export const Login = () => {
   const themeMode = useAppSelector(selectThemeMode)
   const isLoggedIn = useAppSelector(selectIsLoggedIn)
   const theme = getTheme(themeMode)
-
-  const dispatch = useAppDispatch()
-
   const [login] = useLoginMutation()
+  const dispatch = useAppDispatch()
 
   const {
     register,
@@ -38,11 +36,6 @@ export const Login = () => {
     control,
     formState: { errors },
   } = useForm<LoginArgs>({ defaultValues: { email: "", password: "", rememberMe: false } })
-
-  // const onSubmit: SubmitHandler<Inputs> = (data) => {
-  //   dispatch(loginTC(data))
-  //   reset()
-  // }
 
   const onSubmit: SubmitHandler<LoginArgs> = (data) => {
     login(data)

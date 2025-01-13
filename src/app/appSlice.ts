@@ -2,27 +2,28 @@ import { createSlice } from "@reduxjs/toolkit"
 
 export type ThemeMode = "dark" | "light"
 export type RequestStatus = "idle" | "loading" | "succeeded" | "failed"
+export type ErrorStatus = string | null
 
 export const appSlice = createSlice({
   name: "app",
   initialState: {
     themeMode: "light" as ThemeMode,
     status: "idle" as RequestStatus,
-    error: null as string | null,
+    error: null as ErrorStatus,
     isLoggedIn: false,
   },
   reducers: (create) => ({
-    setIsLoggedIn: create.reducer<{ isLoggedIn: boolean }>((state, action) => {
-      state.isLoggedIn = action.payload.isLoggedIn
-    }),
     changeTheme: create.reducer<{ themeMode: ThemeMode }>((state, action) => {
       state.themeMode = action.payload.themeMode
     }),
     setAppStatus: create.reducer<{ status: RequestStatus }>((state, action) => {
       state.status = action.payload.status
     }),
-    setAppError: create.reducer<{ error: string | null }>((state, action) => {
+    setAppError: create.reducer<{ error: ErrorStatus }>((state, action) => {
       state.error = action.payload.error
+    }),
+    setIsLoggedIn: create.reducer<{ isLoggedIn: boolean }>((state, action) => {
+      state.isLoggedIn = action.payload.isLoggedIn
     }),
   }),
   selectors: {
