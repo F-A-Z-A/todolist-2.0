@@ -1,14 +1,15 @@
-import { EditableSpan } from "common/components"
-import { TaskStatus } from "common/enums"
-import { DomainTask, type UpdateTaskModel } from "../../../../../api/tasksApi.types"
-import { DomainTodolist } from "../../../../../model/todolistsSlice"
-import { getListItemSx } from "./Task.styles"
-import { ChangeEvent } from "react"
 import DeleteIcon from "@mui/icons-material/Delete"
 import Checkbox from "@mui/material/Checkbox"
 import IconButton from "@mui/material/IconButton"
 import ListItem from "@mui/material/ListItem"
-import { useRemoveTaskMutation, useUpdateTaskMutation } from "features/todolists/api/tasksApi"
+import { EditableSpan } from "common/components"
+import { TaskStatus } from "common/enums"
+import { ChangeEvent } from "react"
+import { useRemoveTaskMutation, useUpdateTaskMutation } from "../../../../../api/tasksApi"
+import { DomainTask } from "../../../../../api/tasksApi.types"
+import { createTaskModel } from "../../../../../lib/utils/createTaskModel"
+import { getListItemSx } from "./Task.styles"
+import type { DomainTodolist } from "features/todolists/lib/types/types"
 
 type Props = {
   task: DomainTask
@@ -23,24 +24,14 @@ export const Task = ({ task, todolist }: Props) => {
     removeTask({ taskId: task.id, todolistId: todolist.id })
   }
 
-  const modelCreator = (updateParams: Partial<UpdateTaskModel>): UpdateTaskModel => ({
-    status: task.status,
-    startDate: task.startDate,
-    priority: task.priority,
-    deadline: task.deadline,
-    title: task.title,
-    description: task.description,
-    ...updateParams,
-  })
-
   const changeTaskStatusHandler = (e: ChangeEvent<HTMLInputElement>) => {
     let status = e.currentTarget.checked ? TaskStatus.Completed : TaskStatus.New
-    const model = modelCreator({ status })
+    const model = createTaskModel(task, { status })
     updateTask({ taskId: task.id, todolistId: todolist.id, model })
   }
 
   const changeTaskTitleHandler = (title: string) => {
-    const model = modelCreator({ title })
+    const model = createTaskModel(task, { title })
     updateTask({ taskId: task.id, todolistId: todolist.id, model })
   }
 

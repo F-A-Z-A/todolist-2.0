@@ -1,19 +1,20 @@
+import CircularProgress from "@mui/material/CircularProgress"
 import CssBaseline from "@mui/material/CssBaseline"
 import { ThemeProvider } from "@mui/material/styles"
 import { ErrorSnackbar, Header } from "common/components"
+import { ResultCode } from "common/enums"
 import { useAppDispatch, useAppSelector } from "common/hooks"
 import { getTheme } from "common/theme"
 import { useEffect, useState } from "react"
 import { Outlet } from "react-router-dom"
-import CircularProgress from "@mui/material/CircularProgress"
+import { useMeQuery } from "../features/auth/api/authAPI"
 import s from "./App.module.css"
 import { selectThemeMode, setIsLoggedIn } from "./appSlice"
-import { useMeQuery } from "features/auth/api/authAPI"
-import { ResultCode } from "common/enums"
 
 export const App = () => {
-  const [isInitialized, setIsInitialized] = useState<boolean>(false)
   const themeMode = useAppSelector(selectThemeMode)
+
+  const [isInitialized, setIsInitialized] = useState(false)
 
   const dispatch = useAppDispatch()
 
@@ -26,7 +27,7 @@ export const App = () => {
         dispatch(setIsLoggedIn({ isLoggedIn: true }))
       }
     }
-  }, [data, isLoading])
+  }, [isLoading, data])
 
   return (
     <ThemeProvider theme={getTheme(themeMode)}>

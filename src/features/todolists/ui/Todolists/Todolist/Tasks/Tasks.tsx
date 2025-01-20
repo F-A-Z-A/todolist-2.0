@@ -1,15 +1,20 @@
 import List from "@mui/material/List"
 import { TaskStatus } from "common/enums"
-import { DomainTodolist } from "../../../../model/todolistsSlice"
+import { useGetTasksQuery } from "../../../../api/tasksApi"
 import { Task } from "./Task/Task"
-import { useGetTasksQuery } from "features/todolists/api/tasksApi"
+import { TasksSkeleton } from "features/todolists/ui/skeletons/TasksSkeleton/TasksSkeleton"
+import type { DomainTodolist } from "features/todolists/lib/types/types"
 
 type Props = {
   todolist: DomainTodolist
 }
 
 export const Tasks = ({ todolist }: Props) => {
-  const { data } = useGetTasksQuery(todolist.id)
+  const { data, isLoading } = useGetTasksQuery(todolist.id)
+
+  if (isLoading) {
+    return <TasksSkeleton />
+  }
 
   const getTasks = () => {
     let tasksForTodolist = data?.items
@@ -24,7 +29,7 @@ export const Tasks = ({ todolist }: Props) => {
 
   return (
     <>
-      {data?.items.length === 0 ? (
+      {data?.items?.length === 0 ? (
         <p>Тасок нет</p>
       ) : (
         <List>

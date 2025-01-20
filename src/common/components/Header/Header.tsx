@@ -4,21 +4,23 @@ import IconButton from "@mui/material/IconButton"
 import LinearProgress from "@mui/material/LinearProgress"
 import Switch from "@mui/material/Switch"
 import Toolbar from "@mui/material/Toolbar"
-import { changeTheme, selectAppStatus, selectIsLoggedIn, selectThemeMode, setIsLoggedIn } from "app/appSlice"
+import { MenuButton } from "common/components"
+import { ResultCode } from "common/enums"
 import { useAppDispatch, useAppSelector } from "common/hooks"
 import { getTheme } from "common/theme"
-import { MenuButton } from "common/components"
+import { changeTheme, selectAppStatus, selectIsLoggedIn, selectThemeMode, setIsLoggedIn } from "app/appSlice"
 import { useLogoutMutation } from "features/auth/api/authAPI"
-import { ResultCode } from "common/enums"
-import { clearTasks } from "features/todolists/model/tasksSlice"
-import { clearTodolists } from "features/todolists/model/todolistsSlice"
+import { baseApi } from "app/baseApi"
 
 export const Header = () => {
   const dispatch = useAppDispatch()
+
   const themeMode = useAppSelector(selectThemeMode)
   const status = useAppSelector(selectAppStatus)
   const isLoggedIn = useAppSelector(selectIsLoggedIn)
+
   const [logout] = useLogoutMutation()
+
   const theme = getTheme(themeMode)
 
   const changeModeHandler = () => {
@@ -26,14 +28,17 @@ export const Header = () => {
   }
 
   const logoutHandler = () => {
-    logout().then((res) => {
-      if (res.data?.resultCode === ResultCode.Success) {
-        dispatch(setIsLoggedIn({ isLoggedIn: false }))
-        dispatch(clearTasks())
-        dispatch(clearTodolists())
-        localStorage.removeItem("sn-token")
-      }
-    })
+    logout()
+      .then((res) => {
+        if (res.data?.resultCode === ResultCode.Success) {
+          dispatch(setIsLoggedIn({ isLoggedIn: false }))
+          localStorage.removeItem("sn-token")
+        }
+      })
+      .then(() => {
+        // dispatch(baseApi.util.resetApiState())
+        dispatch(baseApi.util.invalidateTags(["Todolist", "Task"]))
+      })
   }
 
   return (

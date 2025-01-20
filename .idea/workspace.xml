@@ -5,6 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="889c0120-3003-4df9-af66-37c0c39b95bc" name="Changes" comment="Lesson-18 (RTK query-1)(2)">
+      <change afterPath="$PROJECT_DIR$/src/common/utils/handleError.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/todolists/lib/types/types.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/todolists/ui/skeletons/TasksSkeleton/TasksSkeleton.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/todolists/ui/skeletons/TasksSkeleton/TasksSkeleton.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/todolists/ui/skeletons/TodolistSkeleton/TodolistSkeleton.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/todolists/ui/skeletons/TodolistSkeleton/TodolistSkeleton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/Main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Main.tsx" afterDir="false" />
@@ -12,17 +19,25 @@
       <change beforePath="$PROJECT_DIR$/src/app/baseApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/baseApi.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/store.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/common/components/Header/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/components/Header/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/router/router.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/router/router.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/utils/handleServerAppError.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/utils/handleServerNetworkError.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/utils/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/utils/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/auth/api/authApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/auth/api/authApi.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/auth/ui/Login/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/auth/ui/Login/Login.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/todolists/api/tasksApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/todolists/api/tasksApi.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/todolists/api/tasksApi.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/todolists/api/tasksApi.types.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/todolists/api/todolistsApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/todolists/api/todolistsApi.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/todolists/model/tasksSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/todolists/model/tasksSlice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/todolists/model/todolistsSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/todolists/model/todolistsSlice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/todolists/model/__tests__/tasks-reducer.test.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/todolists/model/__tests__/todolists-reducer.test.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/todolists/model/__tests__/todolists-tasks-reducer.test.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/todolists/model/tasksSlice.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/todolists/model/todolistsSlice.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/todolists/ui/Todolists/Todolist/FilterTasksButtons/FilterTasksButtons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/todolists/ui/Todolists/Todolist/FilterTasksButtons/FilterTasksButtons.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/todolists/ui/Todolists/Todolist/Tasks/Task/Task.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/todolists/ui/Todolists/Todolist/Tasks/Task/Task.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/todolists/ui/Todolists/Todolist/Tasks/Tasks.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/todolists/ui/Todolists/Todolist/Tasks/Tasks.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/todolists/ui/Todolists/Todolist/Todolist.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/todolists/ui/Todolists/Todolist/Todolist.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/todolists/ui/Todolists/Todolist/TodolistTitle/TodolistTitle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/todolists/ui/Todolists/Todolist/TodolistTitle/TodolistTitle.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/todolists/ui/Todolists/Todolists.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/todolists/ui/Todolists/Todolists.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -33,8 +48,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -110,11 +125,11 @@
       <recent name="D:\IT\FrontEnd\projects\git\project-todolist-2.0\src\common\types" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\IT\FrontEnd\projects\git\project-todolist-2.0\src\features\todolists\ui" />
       <recent name="D:\IT\FrontEnd\projects\git\project-todolist-2.0\src\features\todolists\model" />
       <recent name="D:\IT\FrontEnd\projects\git\project-todolist-2.0\src\features\todolists" />
       <recent name="D:\IT\FrontEnd\projects\git\project-todolist-2.0\src\common\components\MenuButton" />
       <recent name="D:\IT\FrontEnd\projects\git\project-todolist-2.0\src\common\components\Header" />
-      <recent name="D:\IT\FrontEnd\projects\git\project-todolist-2.0\src\model\__tests__" />
     </key>
   </component>
   <component name="RunManager" selected="npm.start">
@@ -273,7 +288,16 @@
       <workItem from="1736433408752" duration="650000" />
       <workItem from="1736741338013" duration="6000" />
       <workItem from="1736741420739" duration="6950000" />
-      <workItem from="1736760585352" duration="6899000" />
+      <workItem from="1736760585352" duration="6932000" />
+      <workItem from="1736778058147" duration="2874000" />
+      <workItem from="1736827195221" duration="2206000" />
+      <workItem from="1736829902487" duration="54000" />
+      <workItem from="1736912612505" duration="5000" />
+      <workItem from="1736912821097" duration="550000" />
+      <workItem from="1737086201824" duration="6459000" />
+      <workItem from="1737103155256" duration="3507000" />
+      <workItem from="1737179981615" duration="21000" />
+      <workItem from="1737344532963" duration="11235000" />
     </task>
     <task id="LOCAL-00001" summary="Lesson-09">
       <option name="closed" value="true" />
@@ -411,7 +435,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736432508754</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Lesson-18 (RTK query-1)(2)">
+      <option name="closed" value="true" />
+      <created>1736767606344</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1736767606344</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

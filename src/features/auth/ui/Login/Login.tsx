@@ -6,28 +6,24 @@ import FormGroup from "@mui/material/FormGroup"
 import FormLabel from "@mui/material/FormLabel"
 import Grid from "@mui/material/Grid"
 import TextField from "@mui/material/TextField"
+import { ResultCode } from "common/enums"
 import { useAppDispatch, useAppSelector } from "common/hooks"
 import { getTheme } from "common/theme"
 import { Controller, SubmitHandler, useForm } from "react-hook-form"
 import { Navigate } from "react-router-dom"
-import { selectIsLoggedIn, selectThemeMode, setIsLoggedIn } from "app/appSlice"
+import { selectIsLoggedIn, selectThemeMode, setIsLoggedIn } from "../../../../app/appSlice"
+import { useLoginMutation } from "../../api/authAPI"
+import { LoginArgs } from "../../api/authAPI.types"
 import s from "./Login.module.css"
-import { LoginArgs } from "features/auth/api/authAPI.types"
-import { useLoginMutation } from "features/auth/api/authAPI"
-import { ResultCode } from "common/enums"
-
-type Inputs = {
-  email: string
-  password: string
-  rememberMe: boolean
-}
 
 export const Login = () => {
   const themeMode = useAppSelector(selectThemeMode)
   const isLoggedIn = useAppSelector(selectIsLoggedIn)
   const theme = getTheme(themeMode)
-  const [login] = useLoginMutation()
+
   const dispatch = useAppDispatch()
+
+  const [login] = useLoginMutation()
 
   const {
     register,
