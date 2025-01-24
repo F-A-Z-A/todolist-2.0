@@ -1,5 +1,5 @@
-import { Todolist } from "features/todolists/api/todolistsApi.types"
-import { RequestStatus } from "app/appSlice"
+import { RequestStatus } from "../../../../app/appSlice"
+import { Todolist } from "../../api/todolistsApi.types"
 
 export type FilterValues = "all" | "active" | "completed"
 

@@ -4,40 +4,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="889c0120-3003-4df9-af66-37c0c39b95bc" name="Changes" comment="Lesson-18 (RTK query-1)(2)">
-      <change afterPath="$PROJECT_DIR$/src/common/utils/handleError.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/todolists/lib/types/types.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/todolists/ui/skeletons/TasksSkeleton/TasksSkeleton.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/todolists/ui/skeletons/TasksSkeleton/TasksSkeleton.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/todolists/ui/skeletons/TodolistSkeleton/TodolistSkeleton.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/todolists/ui/skeletons/TodolistSkeleton/TodolistSkeleton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="e159f52c-cd5e-47e9-90cc-d886c97eb672" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/features/auth/lib/hooks/useLogin.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/auth/ui/Login/LoginForm/LoginForm.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/auth/ui/Login/LoginFormLabel/LoginFormLabel.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/todolists/lib/hooks/useTasks.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/todolists/ui/Todolists/Todolist/TasksPagination/TasksPagination.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/todolists/ui/Todolists/Todolist/TasksPagination/TasksPagination.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Main.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/appSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/appSlice.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/baseApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/baseApi.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/store.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/common/components/Header/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/components/Header/Header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/router/router.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/router/router.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/utils/handleServerAppError.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/utils/handleServerNetworkError.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/utils/handleError.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/utils/handleError.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/common/utils/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/utils/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/auth/api/authApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/auth/api/authApi.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/auth/ui/Login/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/auth/ui/Login/Login.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/todolists/api/tasksApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/todolists/api/tasksApi.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/todolists/api/todolistsApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/todolists/api/todolistsApi.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/todolists/model/__tests__/tasks-reducer.test.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/todolists/model/__tests__/todolists-reducer.test.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/todolists/model/__tests__/todolists-tasks-reducer.test.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/todolists/model/tasksSlice.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/todolists/model/todolistsSlice.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/todolists/lib/types/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/todolists/lib/types/types.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/todolists/ui/Todolists/Todolist/FilterTasksButtons/FilterTasksButtons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/todolists/ui/Todolists/Todolist/FilterTasksButtons/FilterTasksButtons.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/todolists/ui/Todolists/Todolist/Tasks/Task/Task.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/todolists/ui/Todolists/Todolist/Tasks/Task/Task.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/todolists/ui/Todolists/Todolist/Tasks/Tasks.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/todolists/ui/Todolists/Todolist/Tasks/Tasks.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/todolists/ui/Todolists/Todolist/Todolist.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/todolists/ui/Todolists/Todolist/Todolist.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/todolists/ui/Todolists/Todolist/TodolistTitle/TodolistTitle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/todolists/ui/Todolists/Todolist/TodolistTitle/TodolistTitle.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/todolists/ui/Todolists/Todolists.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/todolists/ui/Todolists/Todolists.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/todolists/ui/skeletons/TasksSkeleton/TasksSkeleton.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/todolists/ui/skeletons/TasksSkeleton/TasksSkeleton.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/todolists/ui/skeletons/TodolistSkeleton/TodolistSkeleton.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/todolists/ui/skeletons/TodolistSkeleton/TodolistSkeleton.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -45,94 +39,55 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="TypeScript File" />
-        <option value="TypeScript JSX File" />
-      </list>
-    </option>
-  </component>
   <component name="FormatOnSaveOptions">
     <option name="myRunOnSave" value="true" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;F-A-Z-A&quot;
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "F-A-Z-A"
   }
-}</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;git@github.com:F-A-Z-A/todolist-2.0.git&quot;,
-    &quot;accountId&quot;: &quot;e71cfcf0-40ea-4611-b1cf-270e2a896af0&quot;
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "git@github.com:F-A-Z-A/todolist-2.0.git",
+    "accountId": "e71cfcf0-40ea-4611-b1cf-270e2a896af0"
   }
-}</component>
+}]]></component>
   <component name="OptimizeOnSaveOptions">
     <option name="myRunOnSave" value="true" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 1
-}</component>
-  <component name="ProjectId" id="2oN6bUfsXKI9GRVJ1GrDTRmzQn5" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 1
+}]]></component>
+  <component name="ProjectId" id="2s3g5nN9sV42eNxGnOcf8d4BmZm" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Jest.correct task should be added to correct array.executor&quot;: &quot;Run&quot;,
-    &quot;Jest.correct task should be deleted from correct array.executor&quot;: &quot;Run&quot;,
-    &quot;Jest.correct todolist should be removed.executor&quot;: &quot;Run&quot;,
-    &quot;Jest.ids should be equals.executor&quot;: &quot;Run&quot;,
-    &quot;Jest.new array should be added when new todolist is added.executor&quot;: &quot;Run&quot;,
-    &quot;Jest.status of specified task should be changed.executor&quot;: &quot;Run&quot;,
-    &quot;Jest.title of specified task should be changed.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/IT/FrontEnd/projects/git/project-todolist-2.0/src/common/utils&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.stylelint&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs.jest.jest_package&quot;: &quot;D:/IT/FrontEnd/projects/git/project-todolist-2.0/node_modules/react-scripts&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
-    &quot;npm.start.executor&quot;: &quot;Run&quot;,
-    &quot;npm.test.executor&quot;: &quot;Run&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;D:\\IT\\FrontEnd\\projects\\git\\project-todolist-2.0\\node_modules\\prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;inlay.hints&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;D:\\IT\\FrontEnd\\projects\\git\\project-todolist-2.0\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.stylelint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.stylelint": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "yarn",
+    "npm.start.executor": "Run",
+    "prettierjs.PrettierConfiguration.Package": "D:\\IT\\FrontEnd\\projects\\git\\project-todolist-2.0\\node_modules\\prettier",
+    "settings.editor.selected.configurable": "settings.javascript.prettier",
+    "ts.external.directory.path": "D:\\IT\\FrontEnd\\projects\\git\\project-todolist-2.0\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\IT\FrontEnd\projects\git\project-todolist-2.0\src\common\utils" />
-      <recent name="D:\IT\FrontEnd\projects\git\project-todolist-2.0\src\common\routing" />
-      <recent name="D:\IT\FrontEnd\projects\git\project-todolist-2.0\src\common\Routing" />
-      <recent name="D:\IT\FrontEnd\projects\git\project-todolist-2.0\src" />
-      <recent name="D:\IT\FrontEnd\projects\git\project-todolist-2.0\src\common\types" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\IT\FrontEnd\projects\git\project-todolist-2.0\src\features\todolists\ui" />
-      <recent name="D:\IT\FrontEnd\projects\git\project-todolist-2.0\src\features\todolists\model" />
-      <recent name="D:\IT\FrontEnd\projects\git\project-todolist-2.0\src\features\todolists" />
-      <recent name="D:\IT\FrontEnd\projects\git\project-todolist-2.0\src\common\components\MenuButton" />
-      <recent name="D:\IT\FrontEnd\projects\git\project-todolist-2.0\src\common\components\Header" />
-    </key>
-  </component>
-  <component name="RunManager" selected="npm.start">
+}]]></component>
+  <component name="RunManager">
     <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -143,20 +98,9 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="test" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="test" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="npm.start" />
-        <item itemvalue="npm.test" />
       </list>
     </recent_temporary>
   </component>
@@ -170,319 +114,16 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="889c0120-3003-4df9-af66-37c0c39b95bc" name="Changes" comment="" />
-      <created>1730697757694</created>
+      <changelist id="e159f52c-cd5e-47e9-90cc-d886c97eb672" name="Changes" comment="" />
+      <created>1737689492570</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1730697757694</updated>
-      <workItem from="1730697759019" duration="8233000" />
-      <workItem from="1730735474175" duration="1059000" />
-      <workItem from="1730736585897" duration="19000" />
-      <workItem from="1731217578311" duration="2000" />
-      <workItem from="1731300969666" duration="3394000" />
-      <workItem from="1731314801893" duration="9713000" />
-      <workItem from="1731332436573" duration="2574000" />
-      <workItem from="1731664720591" duration="395000" />
-      <workItem from="1731734904681" duration="48000" />
-      <workItem from="1731743999372" duration="3200000" />
-      <workItem from="1731758581017" duration="953000" />
-      <workItem from="1731900360978" duration="235000" />
-      <workItem from="1731900607565" duration="9343000" />
-      <workItem from="1731918972602" duration="33000" />
-      <workItem from="1731919292833" duration="9580000" />
-      <workItem from="1732028780693" duration="2707000" />
-      <workItem from="1732166690870" duration="49000" />
-      <workItem from="1732178533788" duration="295000" />
-      <workItem from="1732505878413" duration="5000" />
-      <workItem from="1732513728183" duration="389000" />
-      <workItem from="1732515174590" duration="740000" />
-      <workItem from="1732515940563" duration="1652000" />
-      <workItem from="1732591632347" duration="8214000" />
-      <workItem from="1732601215140" duration="3894000" />
-      <workItem from="1732608986359" duration="9126000" />
-      <workItem from="1732619079857" duration="429000" />
-      <workItem from="1732764526197" duration="687000" />
-      <workItem from="1732785823691" duration="11000" />
-      <workItem from="1732786729100" duration="189000" />
-      <workItem from="1732794326108" duration="302000" />
-      <workItem from="1732795323935" duration="317000" />
-      <workItem from="1732800789831" duration="48000" />
-      <workItem from="1732852056285" duration="8781000" />
-      <workItem from="1732862496083" duration="88000" />
-      <workItem from="1732953573377" duration="4157000" />
-      <workItem from="1732957944881" duration="4300000" />
-      <workItem from="1732964756874" duration="5000" />
-      <workItem from="1732966155053" duration="176000" />
-      <workItem from="1733116334863" duration="123000" />
-      <workItem from="1733118257363" duration="6000" />
-      <workItem from="1733120392413" duration="4000" />
-      <workItem from="1733120469013" duration="796000" />
-      <workItem from="1733199993524" duration="3000" />
-      <workItem from="1733200136970" duration="9741000" />
-      <workItem from="1733231234715" duration="13000" />
-      <workItem from="1733305461461" duration="136000" />
-      <workItem from="1733305684634" duration="145000" />
-      <workItem from="1733313264104" duration="9000" />
-      <workItem from="1733324116637" duration="1782000" />
-      <workItem from="1733457397409" duration="7000" />
-      <workItem from="1733457469071" duration="2429000" />
-      <workItem from="1733459946406" duration="2984000" />
-      <workItem from="1733639359326" duration="792000" />
-      <workItem from="1733656140367" duration="190000" />
-      <workItem from="1733657049757" duration="355000" />
-      <workItem from="1733716550329" duration="7000" />
-      <workItem from="1733716576863" duration="2000" />
-      <workItem from="1733716736263" duration="3644000" />
-      <workItem from="1733720953399" duration="6867000" />
-      <workItem from="1733735017934" duration="5648000" />
-      <workItem from="1733807524992" duration="155000" />
-      <workItem from="1733811112467" duration="127000" />
-      <workItem from="1734324537002" duration="9435000" />
-      <workItem from="1734340623076" duration="4651000" />
-      <workItem from="1734349241813" duration="583000" />
-      <workItem from="1734408424437" duration="6239000" />
-      <workItem from="1734426822179" duration="10000" />
-      <workItem from="1734428338153" duration="950000" />
-      <workItem from="1734433968928" duration="359000" />
-      <workItem from="1734492338357" duration="10781000" />
-      <workItem from="1734513565853" duration="4618000" />
-      <workItem from="1734519498423" duration="184000" />
-      <workItem from="1734520752722" duration="17000" />
-      <workItem from="1734772730623" duration="42000" />
-      <workItem from="1734774280014" duration="667000" />
-      <workItem from="1734849355908" duration="10179000" />
-      <workItem from="1734924246663" duration="14000" />
-      <workItem from="1734926007696" duration="161000" />
-      <workItem from="1734945263847" duration="672000" />
-      <workItem from="1735018345489" duration="4051000" />
-      <workItem from="1735037556481" duration="3008000" />
-      <workItem from="1735045929097" duration="4682000" />
-      <workItem from="1735097108550" duration="10008000" />
-      <workItem from="1735190105443" duration="50000" />
-      <workItem from="1735213551941" duration="123000" />
-      <workItem from="1735446168602" duration="39000" />
-      <workItem from="1735446334215" duration="6951000" />
-      <workItem from="1735453543183" duration="4493000" />
-      <workItem from="1735567748235" duration="75000" />
-      <workItem from="1735568706569" duration="39000" />
-      <workItem from="1735568843445" duration="17000" />
-      <workItem from="1735569592320" duration="50000" />
-      <workItem from="1735569843447" duration="161000" />
-      <workItem from="1735625444880" duration="31000" />
-      <workItem from="1735648159466" duration="799000" />
-      <workItem from="1735728351608" duration="1638000" />
-      <workItem from="1735730499461" duration="240000" />
-      <workItem from="1735790892718" duration="13593000" />
-      <workItem from="1735813772269" duration="5151000" />
-      <workItem from="1735965192688" duration="2568000" />
-      <workItem from="1736051636710" duration="9654000" />
-      <workItem from="1736061771665" duration="4302000" />
-      <workItem from="1736072649903" duration="3255000" />
-      <workItem from="1736228903941" duration="93000" />
-      <workItem from="1736231364467" duration="98000" />
-      <workItem from="1736317682189" duration="9025000" />
-      <workItem from="1736331384030" duration="3357000" />
-      <workItem from="1736397348315" duration="4569000" />
-      <workItem from="1736412578289" duration="9091000" />
-      <workItem from="1736425403826" duration="4273000" />
-      <workItem from="1736433408752" duration="650000" />
-      <workItem from="1736741338013" duration="6000" />
-      <workItem from="1736741420739" duration="6950000" />
-      <workItem from="1736760585352" duration="6932000" />
-      <workItem from="1736778058147" duration="2874000" />
-      <workItem from="1736827195221" duration="2206000" />
-      <workItem from="1736829902487" duration="54000" />
-      <workItem from="1736912612505" duration="5000" />
-      <workItem from="1736912821097" duration="550000" />
-      <workItem from="1737086201824" duration="6459000" />
-      <workItem from="1737103155256" duration="3507000" />
-      <workItem from="1737179981615" duration="21000" />
-      <workItem from="1737344532963" duration="11235000" />
+      <updated>1737689492570</updated>
+      <workItem from="1737689493841" duration="6242000" />
     </task>
-    <task id="LOCAL-00001" summary="Lesson-09">
-      <option name="closed" value="true" />
-      <created>1730708901771</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1730708901771</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Lesson-10">
-      <option name="closed" value="true" />
-      <created>1731325388090</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1731325388090</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Lesson-10(refactor: useSelector and useDispatch in Todolist.tsx)">
-      <option name="closed" value="true" />
-      <created>1731334990541</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1731334990541</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Lesson-11 (Decomposition / refactoring / folder structure / selectors)">
-      <option name="closed" value="true" />
-      <created>1731929026683</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1731929026683</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Lesson-12 (REST API)">
-      <option name="closed" value="true" />
-      <created>1732618926346</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1732618926346</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Lesson-13 (API, instanceAxios, .env, prettier)">
-      <option name="closed" value="true" />
-      <created>1733210584055</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1733210584055</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Lesson-13 (API, instanceAxios, .env, prettier)(2)">
-      <option name="closed" value="true" />
-      <created>1733463007659</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1733463007660</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Lesson-14 (thunk)(1)">
-      <option name="closed" value="true" />
-      <created>1733742716218</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1733742716218</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Lesson-14 (thunk)(2)">
-      <option name="closed" value="true" />
-      <created>1734334255397</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1734334255397</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Lesson-14 (thunk)(2) + advanced typing thunk">
-      <option name="closed" value="true" />
-      <created>1734345319705</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1734345319705</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Lesson-15 (PreLoaders)(1)">
-      <option name="closed" value="true" />
-      <created>1734519672219</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1734519672219</updated>
-    </task>
-    <task id="LOCAL-00012" summary="Lesson-15 (PreLoaders, Errors)(2)">
-      <option name="closed" value="true" />
-      <created>1734862207463</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1734862207463</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Lesson-16 (auth flow)(1)">
-      <option name="closed" value="true" />
-      <created>1735107124733</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1735107124733</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Lesson-16 (auth flow)(2)">
-      <option name="closed" value="true" />
-      <created>1735458052635</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1735458052635</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Lesson-17 (RTK)(1)">
-      <option name="closed" value="true" />
-      <created>1735805987044</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1735805987044</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Lesson-17 (RTK)(2)+createSliceWithThunks">
-      <option name="closed" value="true" />
-      <created>1736334765415</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1736334765415</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Lesson-18 (RTK query)(1)">
-      <option name="closed" value="true" />
-      <created>1736432508754</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1736432508754</updated>
-    </task>
-    <task id="LOCAL-00018" summary="Lesson-18 (RTK query-1)(2)">
-      <option name="closed" value="true" />
-      <created>1736767606344</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1736767606344</updated>
-    </task>
-    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="UnknownFeatures">
-    <option featureType="com.intellij.fileTypeFactory" implementationName=".env" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Lesson-09" />
-    <MESSAGE value="Lesson-10" />
-    <MESSAGE value="Lesson-10(refactor: useSelector and useDispatch in Todolist.tsx)" />
-    <MESSAGE value="Lesson-11 (Decomposition / refactoring / folder structure / selectors)" />
-    <MESSAGE value="Lesson-12 (REST API)" />
-    <MESSAGE value="Lesson-13 (API, instanceAxios, .env, prettier)" />
-    <MESSAGE value="Lesson-13 (API, instanceAxios, .env, prettier)(2)" />
-    <MESSAGE value="Lesson-14 (thunk)(1)" />
-    <MESSAGE value="Lesson-14 (thunk)(2)" />
-    <MESSAGE value="Lesson-14 (thunk)(2) + advanced typing thunk" />
-    <MESSAGE value="Lesson-15 (PreLoaders)(1)" />
-    <MESSAGE value="Lesson-15 (PreLoaders, Errors)(2)" />
-    <MESSAGE value="Lesson-16 (auth flow)(1)" />
-    <MESSAGE value="Lesson-16 (auth flow)(2)" />
-    <MESSAGE value="Lesson-17 (RTK)(1)" />
-    <MESSAGE value="Lesson-17 (RTK)(2)+createSliceWithThunks" />
-    <MESSAGE value="Lesson-18 (RTK query)(1)" />
-    <MESSAGE value="Lesson-18 (RTK query-1)(2)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Lesson-18 (RTK query-1)(2)" />
   </component>
 </project>

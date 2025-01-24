@@ -1,42 +1,34 @@
 import List from "@mui/material/List"
-import { TaskStatus } from "common/enums"
-import { useGetTasksQuery } from "../../../../api/tasksApi"
+import { DomainTodolist } from "../../../../lib/types/types"
+import { TasksSkeleton } from "../../../skeletons/TasksSkeleton/TasksSkeleton"
 import { Task } from "./Task/Task"
-import { TasksSkeleton } from "features/todolists/ui/skeletons/TasksSkeleton/TasksSkeleton"
-import type { DomainTodolist } from "features/todolists/lib/types/types"
+import { TasksPagination } from "features/todolists/ui/Todolists/Todolist/TasksPagination/TasksPagination"
+import { useTasks } from "features/todolists/lib/hooks/useTasks"
 
 type Props = {
   todolist: DomainTodolist
 }
 
 export const Tasks = ({ todolist }: Props) => {
-  const { data, isLoading } = useGetTasksQuery(todolist.id)
+  const { allTasks, tasksForTodolist, isLoading, totalCount, page, setPage } = useTasks(todolist)
 
   if (isLoading) {
     return <TasksSkeleton />
   }
 
-  const getTasks = () => {
-    let tasksForTodolist = data?.items
-    if (todolist.filter === "active") {
-      tasksForTodolist = tasksForTodolist?.filter((task) => task.status === TaskStatus.New)
-    }
-    if (todolist.filter === "completed") {
-      tasksForTodolist = tasksForTodolist?.filter((task) => task.status === TaskStatus.Completed)
-    }
-    return tasksForTodolist
-  }
-
   return (
     <>
-      {data?.items?.length === 0 ? (
+      {allTasks?.length === 0 ? (
         <p>Тасок нет</p>
       ) : (
-        <List>
-          {getTasks()?.map((task) => {
-            return <Task key={task.id} task={task} todolist={todolist} />
-          })}
-        </List>
+        <>
+          <List>
+            {tasksForTodolist?.map((task) => {
+              return <Task key={task.id} task={task} todolist={todolist} />
+            })}
+          </List>
+          <TasksPagination totalCount={totalCount || 0} page={page} setPage={setPage} />
+        </>
       )}
     </>
   )

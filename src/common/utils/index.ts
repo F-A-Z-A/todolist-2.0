@@ -1,1 +1,1 @@
-export { handleError } from "common/utils/handleError"
+export { handleError } from "./handleError"

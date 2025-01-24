@@ -1,24 +1,17 @@
 import { createSlice, isFulfilled, isPending, isRejected } from "@reduxjs/toolkit"
-import { todolistsApi } from "features/todolists/api/todolistsApi"
-import { tasksApi } from "features/todolists/api/tasksApi"
+import { tasksApi } from "../features/todolists/api/tasksApi"
+import { todolistsApi } from "../features/todolists/api/todolistsApi"
 
 export type ThemeMode = "dark" | "light"
 export type RequestStatus = "idle" | "loading" | "succeeded" | "failed"
-export type ErrorStatus = string | null
 
 export const appSlice = createSlice({
   name: "app",
   initialState: {
     themeMode: "light" as ThemeMode,
     status: "idle" as RequestStatus,
-    error: null as ErrorStatus,
+    error: null as string | null,
     isLoggedIn: false,
-  },
-  selectors: {
-    selectThemeMode: (state) => state.themeMode,
-    selectAppStatus: (state) => state.status,
-    selectAppError: (state) => state.error,
-    selectIsLoggedIn: (state) => state.isLoggedIn,
   },
   reducers: (create) => ({
     changeTheme: create.reducer<{ themeMode: ThemeMode }>((state, action) => {
@@ -27,7 +20,7 @@ export const appSlice = createSlice({
     setAppStatus: create.reducer<{ status: RequestStatus }>((state, action) => {
       state.status = action.payload.status
     }),
-    setAppError: create.reducer<{ error: ErrorStatus }>((state, action) => {
+    setAppError: create.reducer<{ error: string | null }>((state, action) => {
       state.error = action.payload.error
     }),
     setIsLoggedIn: create.reducer<{ isLoggedIn: boolean }>((state, action) => {
@@ -51,6 +44,12 @@ export const appSlice = createSlice({
       .addMatcher(isRejected, (state) => {
         state.status = "failed"
       })
+  },
+  selectors: {
+    selectThemeMode: (state) => state.themeMode,
+    selectAppStatus: (state) => state.status,
+    selectAppError: (state) => state.error,
+    selectIsLoggedIn: (state) => state.isLoggedIn,
   },
 })
 

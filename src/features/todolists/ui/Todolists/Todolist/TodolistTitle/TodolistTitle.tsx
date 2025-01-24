@@ -1,11 +1,12 @@
 import DeleteIcon from "@mui/icons-material/Delete"
 import IconButton from "@mui/material/IconButton"
 import { EditableSpan } from "common/components"
-import { todolistsApi, useRemoveTodolistMutation, useUpdateTodolistTitleMutation } from "../../../../api/todolistsApi"
-import s from "./TodolistTitle.module.css"
 import { useAppDispatch } from "common/hooks"
-import type { RequestStatus } from "app/appSlice"
-import type { DomainTodolist } from "features/todolists/lib/types/types"
+import { RequestStatus } from "../../../../../../app/appSlice"
+import { todolistsApi, useRemoveTodolistMutation, useUpdateTodolistTitleMutation } from "../../../../api/todolistsApi"
+import { DomainTodolist } from "../../../../lib/types/types"
+
+import s from "./TodolistTitle.module.css"
 
 type Props = {
   todolist: DomainTodolist
@@ -13,15 +14,19 @@ type Props = {
 
 export const TodolistTitle = ({ todolist }: Props) => {
   const { title, id, entityStatus } = todolist
-  const dispatch = useAppDispatch()
+
   const [removeTodolist] = useRemoveTodolistMutation()
   const [updateTodolistTitle] = useUpdateTodolistTitleMutation()
 
+  const dispatch = useAppDispatch()
+
   const updateQueryData = (status: RequestStatus) => {
     dispatch(
-      todolistsApi.util.updateQueryData("getTodolists", undefined, (data) => {
-        const todolist = data.find((tl) => tl.id === id)
-        if (todolist) todolist.entityStatus = status
+      todolistsApi.util.updateQueryData("getTodolists", undefined, (state) => {
+        const index = state.findIndex((tl) => tl.id === id)
+        if (index !== -1) {
+          state[index].entityStatus = status
+        }
       }),
     )
   }
@@ -31,7 +36,7 @@ export const TodolistTitle = ({ todolist }: Props) => {
     removeTodolist(id)
       .unwrap()
       .catch(() => {
-        updateQueryData("failed")
+        updateQueryData("idle")
       })
   }
 

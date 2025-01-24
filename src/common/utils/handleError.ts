@@ -4,7 +4,7 @@ import {
   FetchBaseQueryMeta,
   QueryReturnValue,
 } from "@reduxjs/toolkit/dist/query/react"
-import { setAppError } from "app/appSlice"
+import { setAppError } from "../../app/appSlice"
 import { ResultCode } from "common/enums"
 
 export const handleError = (

@@ -7,9 +7,9 @@ import { TaskStatus } from "common/enums"
 import { ChangeEvent } from "react"
 import { useRemoveTaskMutation, useUpdateTaskMutation } from "../../../../../api/tasksApi"
 import { DomainTask } from "../../../../../api/tasksApi.types"
+import { DomainTodolist } from "../../../../../lib/types/types"
 import { createTaskModel } from "../../../../../lib/utils/createTaskModel"
 import { getListItemSx } from "./Task.styles"
-import type { DomainTodolist } from "features/todolists/lib/types/types"
 
 type Props = {
   task: DomainTask
