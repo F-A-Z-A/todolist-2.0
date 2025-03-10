@@ -1,34 +1,45 @@
 import List from "@mui/material/List"
-import { DomainTodolist } from "../../../../lib/types/types"
-import { TasksSkeleton } from "../../../skeletons/TasksSkeleton/TasksSkeleton"
+import { TaskStatus } from "common/enums"
+import { useAppDispatch, useAppSelector } from "common/hooks"
+import { selectTasks } from "../../../../model/tasksSelectors"
+import { DomainTodolist } from "../../../../model/todolists-reducer"
 import { Task } from "./Task/Task"
-import { TasksPagination } from "features/todolists/ui/Todolists/Todolist/TasksPagination/TasksPagination"
-import { useTasks } from "features/todolists/lib/hooks/useTasks"
 
 type Props = {
   todolist: DomainTodolist
 }
 
 export const Tasks = ({ todolist }: Props) => {
-  const { allTasks, tasksForTodolist, isLoading, totalCount, page, setPage } = useTasks(todolist)
+  const tasks = useAppSelector(selectTasks)
 
-  if (isLoading) {
-    return <TasksSkeleton />
+  const dispatch = useAppDispatch()
+
+  // useEffect(() => {
+  //   dispatch(fetchTasksTC(todolist.id))
+  // }, [])
+
+  const allTodolistTasks = tasks[todolist.id]
+
+  let tasksForTodolist = allTodolistTasks
+
+  if (todolist.filter === "active") {
+    tasksForTodolist = allTodolistTasks.filter((task) => task.status === TaskStatus.New)
+  }
+
+  if (todolist.filter === "completed") {
+    tasksForTodolist = allTodolistTasks.filter((task) => task.status === TaskStatus.Completed)
   }
 
   return (
     <>
-      {allTasks?.length === 0 ? (
+      {tasksForTodolist?.length === 0 ? (
         <p>Тасок нет</p>
       ) : (
-        <>
-          <List>
-            {tasksForTodolist?.map((task) => {
-              return <Task key={task.id} task={task} todolist={todolist} />
-            })}
-          </List>
-          <TasksPagination totalCount={totalCount || 0} page={page} setPage={setPage} />
-        </>
+        <List>
+          {tasksForTodolist?.map((task) => {
+            return <Task key={task.id} task={task} todolist={todolist} />
+          })}
+        </List>
       )}
     </>
   )

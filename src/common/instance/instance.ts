@@ -9,6 +9,5 @@ export const instance = axios.create({
 
 instance.interceptors.request.use(function (config) {
   config.headers["Authorization"] = `Bearer ${localStorage.getItem("sn-token")}`
-
   return config
 })
