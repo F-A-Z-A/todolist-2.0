@@ -3,36 +3,37 @@ import { ThemeProvider } from "@mui/material/styles"
 import { ErrorSnackbar, Header } from "common/components"
 import { useAppDispatch, useAppSelector } from "common/hooks"
 import { getTheme } from "common/theme"
-import { selectThemeMode } from "./appSelectors"
-import { Routing } from "common/routing"
 import { useEffect } from "react"
-import { initializeAppTC } from "features/auth/model/auth-reducer"
-import { selectIsInitialized } from "features/auth/model/authSelectors"
+import { Outlet } from "react-router-dom"
+import { initializeAppTC, selectIsInitialized } from "../features/auth/model/authSlice"
 import CircularProgress from "@mui/material/CircularProgress"
 import s from "./App.module.css"
+import { selectThemeMode } from "./appSlice"
 
 export const App = () => {
   const themeMode = useAppSelector(selectThemeMode)
-  const dispatch = useAppDispatch()
   const isInitialized = useAppSelector(selectIsInitialized)
+
+  const dispatch = useAppDispatch()
 
   useEffect(() => {
     dispatch(initializeAppTC())
   }, [])
 
-  if (!isInitialized) {
-    return (
-      <div className={s.circularProgressContainer}>
-        <CircularProgress size={150} thickness={3} />
-      </div>
-    )
-  }
-
   return (
     <ThemeProvider theme={getTheme(themeMode)}>
       <CssBaseline />
-      <Header />
-      <Routing />
+      {isInitialized && (
+        <>
+          <Header />
+          <Outlet />
+        </>
+      )}
+      {!isInitialized && (
+        <div className={s.circularProgressContainer}>
+          <CircularProgress size={150} thickness={3} />
+        </div>
+      )}
       <ErrorSnackbar />
     </ThemeProvider>
   )
