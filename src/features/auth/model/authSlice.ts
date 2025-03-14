@@ -2,15 +2,15 @@ import { ResultCode } from "common/enums"
 import { handleServerAppError } from "common/utils/handleServerAppError"
 import { handleServerNetworkError } from "common/utils/handleServerNetworkError"
 import { Dispatch } from "redux"
-import { setAppStatus } from "../../../app/appSlice"
+import { clearTasks } from "../../todolists/model/tasksSlice"
+import { clearTodolists } from "../../todolists/model/todolistsSlice"
 import { authApi } from "../api/authAPI"
 import { LoginArgs } from "../api/authAPI.types"
 import { createSlice } from "@reduxjs/toolkit"
-import { clearTodolists } from "../../todolists/model/todolistsSlice"
-import { clearTasks } from "../../todolists/model/tasksSlice"
+import { setAppStatus } from "../../../app/appSlice"
 
 export const authSlice = createSlice({
-  name: "authorization",
+  name: "auth",
   initialState: {
     isLoggedIn: false,
     isInitialized: false,

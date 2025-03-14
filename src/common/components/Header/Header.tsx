@@ -20,11 +20,7 @@ export const Header = () => {
   const theme = getTheme(themeMode)
 
   const changeModeHandler = () => {
-    dispatch(
-      changeTheme({
-        themeMode: themeMode === "light" ? "dark" : "light",
-      }),
-    )
+    dispatch(changeTheme({ themeMode: themeMode === "light" ? "dark" : "light" }))
   }
 
   const logoutHandler = () => {

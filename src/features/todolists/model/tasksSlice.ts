@@ -3,9 +3,8 @@ import { handleServerAppError } from "common/utils/handleServerAppError"
 import { handleServerNetworkError } from "common/utils/handleServerNetworkError"
 import { Dispatch } from "redux"
 import { setAppStatus } from "../../../app/appSlice"
-import { RootState } from "../../../app/store"
 import { tasksApi } from "../api/tasksApi"
-import { DomainTask, UpdateTaskDomainModel, UpdateTaskModel } from "../api/tasksApi.types"
+import { BaseTaskModel, DomainTask } from "../api/tasksApi.types"
 import { createSlice } from "@reduxjs/toolkit"
 import { addTodolist, removeTodolist } from "./todolistsSlice"
 
@@ -29,15 +28,11 @@ export const tasksSlice = createSlice({
       const { task } = action.payload
       state[task.todoListId].unshift(task)
     }),
-    updateTask: create.reducer<{
-      todolistId: string
-      taskId: string
-      domainModel: UpdateTaskDomainModel
-    }>((state, action) => {
-      const { todolistId, taskId, domainModel } = action.payload
-      const tasks = state[todolistId]
-      const index = tasks.findIndex((t) => t.id === taskId)
-      if (index !== -1) tasks[index] = { ...tasks[index], ...domainModel }
+    updateTask: create.reducer<{ task: DomainTask; updateParams: Partial<BaseTaskModel> }>((state, action) => {
+      const { task, updateParams } = action.payload
+      const tasks = state[task.todoListId]
+      const index = tasks.findIndex((t) => t.id === task.id)
+      if (index !== -1) tasks[index] = { ...tasks[index], ...updateParams }
     }),
     clearTasks: create.reducer(() => {
       return {}
@@ -107,40 +102,33 @@ export const addTaskTC = (arg: { title: string; todolistId: string }) => (dispat
 }
 
 export const updateTaskTC =
-  (arg: { taskId: string; todolistId: string; domainModel: UpdateTaskDomainModel }) =>
-  (dispatch: Dispatch, getState: () => RootState) => {
-    const { taskId, todolistId, domainModel } = arg
+  (arg: { task: DomainTask; updateParams: Partial<BaseTaskModel> }) => (dispatch: Dispatch) => {
+    const { task, updateParams } = arg
 
-    const allTasksFromState = getState().tasks
-    const tasksForCurrentTodolist = allTasksFromState[todolistId]
-    const task = tasksForCurrentTodolist.find((t) => t.id === taskId)
-
-    if (task) {
-      const model: UpdateTaskModel = {
-        status: task.status,
-        title: task.title,
-        deadline: task.deadline,
-        description: task.description,
-        priority: task.priority,
-        startDate: task.startDate,
-        ...domainModel,
-      }
-
-      dispatch(setAppStatus({ status: "loading" }))
-      tasksApi
-        .updateTask({ taskId, todolistId, model })
-        .then((res) => {
-          if (res.data.resultCode === ResultCode.Success) {
-            dispatch(setAppStatus({ status: "succeeded" }))
-            dispatch(updateTask(arg))
-          } else {
-            handleServerAppError(res.data, dispatch)
-          }
-        })
-        .catch((error) => {
-          handleServerNetworkError(error, dispatch)
-        })
+    const model: BaseTaskModel = {
+      status: task.status,
+      title: task.title,
+      deadline: task.deadline,
+      description: task.description,
+      priority: task.priority,
+      startDate: task.startDate,
+      ...updateParams,
     }
+
+    dispatch(setAppStatus({ status: "loading" }))
+    tasksApi
+      .updateTask({ todolistId: task.todoListId, taskId: task.id, model })
+      .then((res) => {
+        if (res.data.resultCode === ResultCode.Success) {
+          dispatch(setAppStatus({ status: "succeeded" }))
+          dispatch(updateTask(arg))
+        } else {
+          handleServerAppError(res.data, dispatch)
+        }
+      })
+      .catch((error) => {
+        handleServerNetworkError(error, dispatch)
+      })
   }
 
 // types
