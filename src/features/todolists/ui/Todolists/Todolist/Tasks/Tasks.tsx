@@ -1,34 +1,42 @@
 import List from "@mui/material/List"
-import { useEffect } from "react"
 import { TaskStatus } from "common/enums"
-import { useAppDispatch, useAppSelector } from "common/hooks"
-import { fetchTasksTC, selectTasks } from "../../../../model/tasksSlice"
-import { DomainTodolist } from "../../../../model/todolistsSlice"
+import { useGetTasksQuery } from "../../../../api/tasksApi"
 import { Task } from "./Task/Task"
+import { TasksSkeleton } from "../../../skeletons/TasksSkeleton/TasksSkeleton"
+import { useDispatch } from "react-redux"
+import { setAppError } from "../../../../../../app/appSlice"
+import { DomainTodolist } from "../../../../lib/types/types"
 
 type Props = {
   todolist: DomainTodolist
 }
 
 export const Tasks = ({ todolist }: Props) => {
-  const tasks = useAppSelector(selectTasks)
+  const { data, isLoading, isError, error } = useGetTasksQuery(todolist.id)
 
-  const dispatch = useAppDispatch()
+  const dispatch = useDispatch()
 
-  useEffect(() => {
-    dispatch(fetchTasksTC(todolist.id))
-  }, [])
-
-  const allTodolistTasks = tasks[todolist.id]
-
-  let tasksForTodolist = allTodolistTasks
+  let tasksForTodolist = data?.items
 
   if (todolist.filter === "active") {
-    tasksForTodolist = allTodolistTasks.filter((task) => task.status === TaskStatus.New)
+    tasksForTodolist = tasksForTodolist?.filter((task) => task.status === TaskStatus.New)
   }
 
   if (todolist.filter === "completed") {
-    tasksForTodolist = allTodolistTasks.filter((task) => task.status === TaskStatus.Completed)
+    tasksForTodolist = tasksForTodolist?.filter((task) => task.status === TaskStatus.Completed)
+  }
+
+  if (error) {
+    if ("status" in error) {
+      const errMsg = "error" in error ? error.error : JSON.stringify(error.data)
+      dispatch(setAppError({ error: JSON.stringify(errMsg) }))
+    } else {
+      dispatch(setAppError({ error: error.message ? error.message : JSON.stringify(error) }))
+    }
+  }
+
+  if (isLoading) {
+    return <TasksSkeleton />
   }
 
   return (

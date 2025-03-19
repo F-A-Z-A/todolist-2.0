@@ -6,18 +6,24 @@ export type GetTasksResponse = {
   items: DomainTask[]
 }
 
-export type BaseTaskModel = {
+export type DomainTask = {
+  description: string
+  title: string
+  status: TaskStatus
+  priority: TaskPriority
+  startDate: string
+  deadline: string
+  id: string
+  todoListId: string
+  order: number
+  addedDate: string
+}
+
+export type UpdateTaskModel = {
   title: string
   description: string
   status: TaskStatus
   priority: TaskPriority
   startDate: string
   deadline: string
-}
-
-export type DomainTask = BaseTaskModel & {
-  id: string
-  todoListId: string
-  order: number
-  addedDate: string
 }
