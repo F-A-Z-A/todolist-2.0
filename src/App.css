@@ -1,0 +1,9 @@
+.app {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.app > div {
+  margin-right: 50px;
+}
