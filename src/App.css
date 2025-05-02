@@ -1,6 +1,7 @@
 .app {
   padding: 30px;
   display: flex;
+  flex-direction: column;
 }
 
 .app > div {
@@ -21,4 +22,9 @@
 
 .is-done {
   opacity: 0.5;
+}
+
+.container {
+  display: flex;
+  align-items: center;
 }
