@@ -4,17 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2bf2110a-e2ef-450a-82ba-579f786178e8" name="Changes" comment="lesson-06">
+    <list default="true" id="2bf2110a-e2ef-450a-82ba-579f786178e8" name="Changes" comment="lesson-07">
+      <change afterPath="$PROJECT_DIR$/src/model/tasks-reducer.test.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/tasks-reducer.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/todolists-reducer.test.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/todolists-reducer.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Button.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CreateItemForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/CreateItemForm.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EditableSpan.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/EditableSpan.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TodolistItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/TodolistItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,19 +50,48 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Vitest.correct todolist should be deleted.executor&quot;: &quot;Run&quot;,
+    &quot;Vitest.plus.executor&quot;: &quot;Run&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;npm.test.executor&quot;: &quot;Run&quot;,
     &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\A\\Projects\\FrontEnd\\project-todolist-2.0\\node_modules\\prettier&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;editing.templates&quot;,
     &quot;ts.external.directory.path&quot;: &quot;C:\\A\\Projects\\FrontEnd\\project-todolist-2.0\\node_modules\\typescript\\lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Vitest.correct todolist should be deleted">
+    <configuration name="correct todolist should be deleted" type="JavaScriptTestRunnerVitest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <vitest-package value="$PROJECT_DIR$/node_modules/vitest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <vitest-options value="--run" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/model/todolists-reducer.test.ts" />
+      <test-names>
+        <test-name value="correct todolist should be deleted" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="plus" type="JavaScriptTestRunnerVitest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <vitest-package value="$PROJECT_DIR$/node_modules/vitest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <vitest-options value="--run" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/model/todolists-reducer.test.ts" />
+      <test-names>
+        <test-name value="plus" />
+      </test-names>
+      <method v="2" />
+    </configuration>
     <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -75,9 +102,22 @@
       <envs />
       <method v="2" />
     </configuration>
+    <configuration name="test" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="test" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.test" />
         <item itemvalue="npm.dev" />
+        <item itemvalue="Vitest.correct todolist should be deleted" />
+        <item itemvalue="Vitest.plus" />
       </list>
     </recent_temporary>
   </component>
@@ -101,7 +141,9 @@
       <workItem from="1746158258709" duration="6616000" />
       <workItem from="1746245873043" duration="3836000" />
       <workItem from="1746249937259" duration="326000" />
-      <workItem from="1746250348015" duration="1182000" />
+      <workItem from="1746250348015" duration="2146000" />
+      <workItem from="1746260401313" duration="2905000" />
+      <workItem from="1746269191878" duration="3939000" />
     </task>
     <task id="LOCAL-00001" summary="lesson-01">
       <option name="closed" value="true" />
@@ -135,7 +177,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746165100433</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="lesson-07">
+      <option name="closed" value="true" />
+      <created>1746251862074</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1746251862074</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -157,6 +207,7 @@
     <MESSAGE value="lesson-02-04" />
     <MESSAGE value="lesson-05" />
     <MESSAGE value="lesson-06" />
-    <option name="LAST_COMMIT_MESSAGE" value="lesson-06" />
+    <MESSAGE value="lesson-07" />
+    <option name="LAST_COMMIT_MESSAGE" value="lesson-07" />
   </component>
 </project>
