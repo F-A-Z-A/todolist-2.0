@@ -1,27 +1,7 @@
 .app {
-  padding: 30px;
   display: flex;
   flex-direction: column;
-}
-
-.app > div {
-  margin-right: 50px;
-}
-
-.error {
-  border: red 1px solid;
-}
-
-.error-message {
-  color: red;
-}
-
-.active-filter {
-  background-color: lightgreen;
-}
-
-.is-done {
-  opacity: 0.5;
+  width: 100vw;
 }
 
 .container {

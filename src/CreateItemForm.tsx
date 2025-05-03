@@ -1,12 +1,14 @@
-import { Button } from "./Button.tsx"
-import { ChangeEvent, KeyboardEvent, useState } from "react"
+import { type ChangeEvent, type KeyboardEvent, useState } from "react"
+import TextField from "@mui/material/TextField"
+import AddBoxIcon from "@mui/icons-material/AddBox"
+import IconButton from "@mui/material/IconButton"
 
 type Props = {
-  buttonTitle: string
-  onCreateItem: (value: string) => void
+  onCreateItem: (title: string) => void
 }
-export const CreateItemForm = ({ buttonTitle, onCreateItem }: Props) => {
-  const [title, setTitle] = useState<string>("")
+
+export const CreateItemForm = ({ onCreateItem }: Props) => {
+  const [title, setTitle] = useState("")
   const [error, setError] = useState<string | null>(null)
 
   const createItemHandler = () => {
@@ -19,9 +21,9 @@ export const CreateItemForm = ({ buttonTitle, onCreateItem }: Props) => {
     }
   }
 
-  const changeItemTitleHandler = (e: ChangeEvent<HTMLInputElement>) => {
+  const changeTitleHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setTitle(e.currentTarget.value)
-    if (error) setError(null)
+    setError(null)
   }
 
   const createItemOnEnterHandler = (e: KeyboardEvent<HTMLInputElement>) => {
@@ -32,14 +34,19 @@ export const CreateItemForm = ({ buttonTitle, onCreateItem }: Props) => {
 
   return (
     <div>
-      <input
-        className={error ? "error" : undefined}
+      <TextField
+        label={"Enter a title"}
+        variant={"outlined"}
         value={title}
-        onChange={changeItemTitleHandler}
+        size={"small"}
+        error={!!error}
+        helperText={error}
+        onChange={changeTitleHandler}
         onKeyDown={createItemOnEnterHandler}
       />
-      <Button title={buttonTitle} onClick={createItemHandler} />
-      {error && <div className={"error-message"}>{error}</div>}
+      <IconButton onClick={createItemHandler} color={"primary"}>
+        <AddBoxIcon />
+      </IconButton>
     </div>
   )
 }
