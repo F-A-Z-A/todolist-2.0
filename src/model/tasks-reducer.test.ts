@@ -1,5 +1,5 @@
 import { beforeEach, expect, test } from "vitest"
-import type { TasksState } from "../App"
+import type { TasksState } from "../app/App.tsx"
 import { changeTaskStatusAC, changeTaskTitleAC, createTaskAC, deleteTaskAC, tasksReducer } from "./tasks-reducer.ts"
 import { createTodolistAC, deleteTodolistAC } from "./todolists-reducer.ts"
 
@@ -75,7 +75,7 @@ test("correct task should be deleted", () => {
 })
 
 test("property with todolistId should be deleted", () => {
-  const endState = tasksReducer(startState, deleteTodolistAC("todolistId2"))
+  const endState = tasksReducer(startState, deleteTodolistAC({ id: "todolistId2" }))
 
   const keys = Object.keys(endState)
 
