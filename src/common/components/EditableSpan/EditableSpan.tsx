@@ -15,12 +15,12 @@ export const EditableSpan = ({ value, onChange }: Props) => {
   }
 
   const turnOffEditMode = () => {
-    onChange(title)
     setIsEditMode(false)
+    onChange(title)
   }
 
-  const changeTitle = (e: ChangeEvent<HTMLInputElement>) => {
-    setTitle(e.currentTarget.value)
+  const changeTitle = (event: ChangeEvent<HTMLInputElement>) => {
+    setTitle(event.currentTarget.value)
   }
 
   return (

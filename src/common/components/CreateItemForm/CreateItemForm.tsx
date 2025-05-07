@@ -21,13 +21,13 @@ export const CreateItemForm = ({ onCreateItem }: Props) => {
     }
   }
 
-  const changeTitleHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    setTitle(e.currentTarget.value)
-    if (error) setError(null)
+  const changeTitleHandler = (event: ChangeEvent<HTMLInputElement>) => {
+    setTitle(event.currentTarget.value)
+    setError(null)
   }
 
-  const createItemOnEnterHandler = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
+  const createItemOnEnterHandler = (event: KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
       createItemHandler()
     }
   }
