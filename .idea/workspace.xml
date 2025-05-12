@@ -4,14 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2bf2110a-e2ef-450a-82ba-579f786178e8" name="Changes" comment="lesson-11">
-      <change afterPath="$PROJECT_DIR$/src/common/enums/enums.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/todolists/api/tasksApi.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/todolists/api/tasksApi.types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="2bf2110a-e2ef-450a-82ba-579f786178e8" name="Changes" comment="lesson-12">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/AppHttpRequests.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/AppHttpRequests.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/instance/instance.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/instance/instance.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Main.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app-slice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app-selectors.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/components/Header/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/components/Header/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/theme/theme.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/theme/theme.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/todolists/model/__tests__/tasks-reducer.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/todolists/model/__tests__/tasks-reducer.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/todolists/model/__tests__/todolists-reducer.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/todolists/model/__tests__/todolists-reducer.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/todolists/model/tasks-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/todolists/model/tasks-slice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/todolists/model/tasks-selectors.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/todolists/model/todolists-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/todolists/model/todolists-slice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/todolists/model/todolists-selectors.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/todolists/ui/Todolists/TodolistItem/FilterButtons/FilterButtons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/todolists/ui/Todolists/TodolistItem/FilterButtons/FilterButtons.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/todolists/ui/Todolists/TodolistItem/Tasks/TaskItem/TaskItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/todolists/ui/Todolists/TodolistItem/Tasks/TaskItem/TaskItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/todolists/ui/Todolists/TodolistItem/Tasks/Tasks.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/todolists/ui/Todolists/TodolistItem/Tasks/Tasks.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/todolists/ui/Todolists/TodolistItem/TodolistItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/todolists/ui/Todolists/TodolistItem/TodolistItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/todolists/ui/Todolists/TodolistItem/TodolistTitle/TodolistTitle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/todolists/ui/Todolists/TodolistItem/TodolistTitle/TodolistTitle.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/todolists/ui/Todolists/Todolists.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/todolists/ui/Todolists/Todolists.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,27 +59,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "Vitest.correct todolist should be deleted.executor": "Run",
-    "Vitest.plus.executor": "Run",
-    "deletionFromPopupRequiresConfirmation": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/A/Projects/FrontEnd/project-todolist-2.0/src/features/todolists/api",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "npm.dev.executor": "Run",
-    "npm.test.executor": "Run",
-    "prettierjs.PrettierConfiguration.Package": "C:\\A\\Projects\\FrontEnd\\project-todolist-2.0\\node_modules\\prettier",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "C:\\A\\Projects\\FrontEnd\\project-todolist-2.0\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Vitest.correct todolist should be deleted.executor&quot;: &quot;Run&quot;,
+    &quot;Vitest.plus.executor&quot;: &quot;Run&quot;,
+    &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/A/Projects/FrontEnd/project-todolist-2.0/src/features/todolists/api&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;npm.test.executor&quot;: &quot;Run&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\A\\Projects\\FrontEnd\\project-todolist-2.0\\node_modules\\prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\A\\Projects\\FrontEnd\\project-todolist-2.0\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\A\Projects\FrontEnd\project-todolist-2.0\src\features\todolists\api" />
@@ -121,7 +135,9 @@
       <workItem from="1746438893038" duration="5000" />
       <workItem from="1746588006003" duration="5072000" />
       <workItem from="1746793943837" duration="152000" />
-      <workItem from="1746852807295" duration="5284000" />
+      <workItem from="1746852807295" duration="5386000" />
+      <workItem from="1747021054183" duration="6930000" />
+      <workItem from="1747047490958" duration="4403000" />
     </task>
     <task id="LOCAL-00001" summary="lesson-01">
       <option name="closed" value="true" />
@@ -179,7 +195,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746593347123</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="lesson-12">
+      <option name="closed" value="true" />
+      <created>1746858250022</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1746858250022</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -204,6 +228,7 @@
     <MESSAGE value="lesson-07" />
     <MESSAGE value="lesson-08" />
     <MESSAGE value="lesson-11" />
-    <option name="LAST_COMMIT_MESSAGE" value="lesson-11" />
+    <MESSAGE value="lesson-12" />
+    <option name="LAST_COMMIT_MESSAGE" value="lesson-12" />
   </component>
 </project>
