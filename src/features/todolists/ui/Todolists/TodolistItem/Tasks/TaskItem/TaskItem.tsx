@@ -6,10 +6,12 @@ import IconButton from "@mui/material/IconButton"
 import ListItem from "@mui/material/ListItem"
 import type { ChangeEvent } from "react"
 import { getListItemSx } from "./TaskItem.styles"
-import { changeTaskStatus, changeTaskTitle, deleteTask, type Task } from "@/features/todolists/model/tasks-slice.ts"
+import { deleteTask, updateTask } from "@/features/todolists/model/tasks-slice.ts"
+import type { DomainTask } from "@/features/todolists/api/tasksApi.types.ts"
+import { TaskStatus } from "@/common/enums/enums.ts"
 
 type Props = {
-  task: Task
+  task: DomainTask
   todolistId: string
 }
 
@@ -21,18 +23,20 @@ export const TaskItem = ({ task, todolistId }: Props) => {
   }
 
   const changeTaskStatusHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    const newStatusValue = e.currentTarget.checked
-    dispatch(changeTaskStatus({ todolistId, taskId: task.id, isDone: newStatusValue }))
+    const newStatusValue = e.currentTarget.checked ? TaskStatus.Completed : TaskStatus.New
+    dispatch(updateTask({ ...task, status: newStatusValue }))
   }
 
   const changeTaskTitleHandler = (title: string) => {
-    dispatch(changeTaskTitle({ todolistId, taskId: task.id, title }))
+    dispatch(updateTask({ ...task, title }))
   }
 
+  const isTaskCompleted = task.status === TaskStatus.Completed
+
   return (
-    <ListItem sx={getListItemSx(task.isDone)}>
+    <ListItem sx={getListItemSx(isTaskCompleted)}>
       <div>
-        <Checkbox checked={task.isDone} onChange={changeTaskStatusHandler} />
+        <Checkbox checked={isTaskCompleted} onChange={changeTaskStatusHandler} />
         <EditableSpan value={task.title} onChange={changeTaskTitleHandler} />
       </div>
       <IconButton onClick={deleteTaskHandler}>

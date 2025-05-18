@@ -9,3 +9,5 @@ export type FieldError = {
   error: string
   field: string
 }
+
+export type RequestStatus = "idle" | "loading" | "succeeded" | "failed"
